@@ -64,23 +64,19 @@ Definitions:
 
 
 Formulas:
-pmf: $f(x)=P(X=x)$
-- $f(x) \geq 0$ for all $x$
-- $\sum_{x\in\mathbb R} f(x) = 1$
-if $|r| < 1, \sum\limits_1^{\infty}ar^{x-1} = {a\over 1 - r}$
-
-cdf: $F(x) = P(X\leq x)$ = $\sum_{\text{all } t \leq x} f(t)$
-- $P(a\leq X \leq b) = F(b) - F(a-)$
-- $P(X=a) = F(a)-F(a-)$
-- ($a-$ is the largest possible number that is less than $a$, so if the domain is integers, $a- = a-1$)
-
-Expected value (aka mean): $E(X) = \mu_X = \sum_{\text{all } x}xf(x)$
-- $E(h(X)) = \mu_{h(X)} = \sum_{\text{all x}} h(x) \cdot f(x)$
-- $E(aX + b) = aE(X) + b$  or  $E(a\cdot h[X] + b) = aE(h[x]) + b$
-
-Variance: $V(X) = \sigma_X^2 = E[(X-\mu_x)^2] = \sum(X-\mu_x)^2f(x) = E(X^2)-\mu_X^2$
-- $V(aX + b) = a^2V(X)$ and $SD(aX+b) = |a|SD(X)$
-
-Binomial probability distribution: $b(x;n, p) = \left(n\atop x\right)p^x(1-p)^{n-x}; 0\leq x \leq n$
-- $n$ is number of trials, $p$ is success chance, $x$ is number of successes, returns probability of $x$
-- $E(b(x;n,p)) = np$, and $V(b(x;n,p)) = np(1-p)$
+- pmf: $f(x)=P(X=x)$
+	- $f(x) \geq 0$ for all $x$
+	- $\sum_{x\in\mathbb R} f(x) = 1$
+- if $|r| < 1, \sum\limits_1^{\infty}ar^{x-1} = {a\over 1 - r}$
+- cdf: $F(x) = P(X\leq x)$ = $\sum_{\text{all } t \leq x} f(t)$
+	- $P(a\leq X \leq b) = F(b) - F(a-)$
+	- $P(X=a) = F(a)-F(a-)$
+	- ($a-$ is the largest possible number that is less than $a$, so if the domain is integers, $a- = a-1$)
+- Expected value (aka mean): $E(X) = \mu_X = \sum_{\text{all } x}xf(x)$
+	- $E(h(X)) = \mu_{h(X)} = \sum_{\text{all x}} h(x) \cdot f(x)$
+	- $E(aX + b) = aE(X) + b$  or  $E(a\cdot h[X] + b) = aE(h[x]) + b$
+- Variance: $V(X) = \sigma_X^2 = E[(X-\mu_x)^2] = \sum(X-\mu_x)^2f(x) = E(X^2)-\mu_X^2$
+	- $V(aX + b) = a^2V(X)$ and $SD(aX+b) = |a|SD(X)$
+- Binomial probability distribution: $b(x;n, p) = \left(n\atop x\right)p^x(1-p)^{n-x}; 0\leq x \leq n$
+	- $n$ is number of trials, $p$ is success chance, $x$ is number of successes, returns probability of $x$
+	- $E(b(x;n,p)) = np$, and $V(b(x;n,p)) = np(1-p)$
