@@ -56,7 +56,7 @@ Formulas:
 pmf: $f(x)=P(X=x)$
 - $f(x) \geq 0$ for all $x$
 - $\sum_{x\in\mathbb R} f(x) = 1$
-if $|r| < 1, \sum_1^{\infty}ar^{x-1} = {a\over 1 - r}$
+if $|r| < 1, \sum\limits_1^{\infty}ar^{x-1} = {a\over 1 - r}$
 cdf: $F(x) = P(X\leq x)$ = $\sum_{\text{all } t \leq x} f(t)$
 - $P(a\leq X \leq b) = F(b) - F(a-)$
 - $P(X=a) = F(a)-F(a-)$
