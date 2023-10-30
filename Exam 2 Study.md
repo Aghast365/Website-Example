@@ -1,6 +1,8 @@
 Expected value: $E(X)=\mu=\int_A^Bxf(x) \ dx$, $E(h(X)) = \int_A^Bh(x)f(x) \ dx$
+
 Variance: $V(X)=\sigma^2=\int_A^B(x-\mu)^2f(x) \ dx=E(X^2)-E(X)^2$
-Standard Deviation: $SD(X)=\sigma=\sqrt{\sigma^2}$         cdf is sum/integral of pdf
+
+Standard Deviation: $SD(X)=\sigma=\sqrt{\sigma^2}$
 
 Discrete Distributions:
 - Binomial $\text{bin}(n,p)$: $b(x;n, p) = \left(n\atop x\right)p^x(1-p)^{n-x}; 0\leq x \leq n$ -- $\mu = np$ -- $\sigma^2=np(1-p)$ -- $\left({n \atop k}\right) = {n!\over k!(n-k)!}$
@@ -13,7 +15,7 @@ Discrete Distributions:
 	- Approximates binomial when $n>50$ and $np < 5$, using $\mu=np$
 
 Continuous distributions (note: probability of $X=a$ is $0$ for any $a$):
-- Uniform $U(A,B)$: $f(x)={1\over B-A}$, $F(x)={x-A\over B-A}$ -- chance of any x from A to B is equal
+- Uniform $U(A,B)$: $f(x)={1\over B-A}$, $F(x)={x-A\over B-A}$ -- chance of any x from A to B is equal -- cdf is sum/integral of pdf
 - Normal $N(\mu,\sigma)$: $f(x;\mu,\sigma)={1\over\sqrt{2\pi}\sigma}e^{-(x-\mu)^2/(2\sigma^2)}$, $\phi(z)={1\over\sqrt{2\pi}}e^{-z^2/2}$
 	- where $z={x-\mu\over\sigma}$. when $z>3.49$, $\phi(z)\approx1$; and when $z<-3.49$, $\phi(z)\approx0$
 	- a z-critical value $z_\alpha$ is the point where $P(Z\geq z_\alpha) = \alpha$
