@@ -71,7 +71,7 @@ Standard Deviation: $SD(X)=\sigma=\sqrt{\sigma^2}$
 - Gamma $\text{gamma}(\alpha,\beta)$: $f(x;\alpha,\beta)={1\over\beta^\alpha\Gamma(\alpha)}x^{\alpha-1}e^{-x/\beta}$ -- gamma(1,$\beta$) = Exp$({1\over\beta})$ -- $\mu=\alpha\beta$, $\sigma^2=\alpha\beta^2$
 - Chi-square $\chi^2_v$: $f(x,v)={1\over2^{v/2}\Gamma(v/2)}x^{(v/2)-1}e^{-x/2}$ -- $\mu = v$ -- $\sigma^2 = 2v$
 - Weibull $\text{Weibull}(\alpha, \beta)$: $f(x;\alpha,\beta)={\alpha\over\beta^\alpha}x^{\alpha-1}e^{-(x/\beta)^\alpha}; x\geq 0$ -- $\mu = \beta\Gamma(1+1/\alpha)$ -- $\sigma^2=\beta^2\{\Gamma(1+2/\alpha)+[\Gamma(1+1/\alpha)]^2\}$
-- Lognormal $\text{lnorm}(\mu,\sigma)$: $f(x;\mu,\sigma) = {1\over \sqrt{2\pi} \sigma x} e^{-[\ln(x)-\mu]^2/(2\sigma^2)};x\geq 0$ --$F(x)=\Phi({\ln(x)-\mu\over\sigma})$
+- Lognormal $\text{lnorm}(\mu,\sigma)$: $f(x;\mu,\sigma) = {1\over \sqrt{2\pi} \sigma x} e^{-[\ln(x)-\mu]^2/(2\sigma^2)};x\geq 0$ -- $F(x)=\Phi({\ln(x)-\mu\over\sigma})$
 	- Similar to a normal distribution, X is lognormal if $Y=\ln (X)$ is normal
 - Beta $\text{beta}(\alpha,\beta,A,B)$: $f(x;\alpha,\beta,A,B)={1\over B-A}{\Gamma(\alpha+\beta)\over\Gamma(\alpha)\Gamma(\beta)}\left(x-A\over B-A\right)^{\alpha-1}\left(B-x\over B-A\right)^{\beta-1}; A\leq x\leq B$
 	- standard beta $A=0, B=1$ is $\text{beta}(\alpha,\beta)$: $f(x;\alpha,\beta)={\Gamma(\alpha+\beta)\over\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1}; 0\leq x \leq 1$ -- $\text{beta}(1,1,A,B)\sim U(A,B)$
