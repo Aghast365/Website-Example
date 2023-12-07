@@ -9,10 +9,10 @@
 	- IQR/fourth spread: $Q_3-Q_1$ -- the third and first quartiles are the median of the upper and lower halves of the data
 - Variance - sum of squared differences from the mean
 - Standard Deviation - square root of variance
-
+$\;$
 - Positive (right) skew - tail is to the right of the graph, mean is to the right of median
 - Negative (left) sew - tail is to the left of the graph, mean is to the left of median
-
+$\;$
 - rv - random variable function -- converts experiment outcomes into numbers
 - pmf - probability mass function/probability distribution -- gives the probability from 0 to 1 of the rv being a certain value
 - parameter -- value calculated from a pmf. it is said to characterize the pmf if it can be used to reconstruct the pmf
