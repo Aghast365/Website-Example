@@ -41,7 +41,7 @@ PMF: $f(x)=P(X=x)$ -- $f(x) \geq 0$ for all $x$ -- $\sum_{x\in\mathbb R} f(x) = 
 CDF: $F(x) = P(X\leq x)$ = $\sum_{\text{all } t \leq x} f(t)$ -- $P(a\leq X \leq b) = F(b) - F(a-)$ -- $P(X=a) = F(a)-F(a-)$
 - ($a-$ is the largest possible number less than $a$ -- for integers, $a- = a-1$)
 
-Geometric series: if $|r| < 1, \sum_1^{\infty}ar^{x-1} = {a\over 1 - r}$
+Geometric series: if $|r| < 1, \sum_1^{\infty} ar^{x-1} = {a\over 1 - r}$
 
 Expected value: $E(X)=\mu=\int_A^Bxf(x) \ dx$, $E(h(X)) = \int_A^Bh(x)f(x) \ dx$
 Variance: $V(X)=\sigma^2=\int_A^B(x-\mu)^2f(x) \ dx=E(X^2)-E(X)^2$
