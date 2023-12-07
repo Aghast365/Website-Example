@@ -1,11 +1,11 @@
 
 ## Definitions
-- Mean - sum of values divided by number
-	- Trimmed Mean - mean with percent of top and bottom removed
-	- Geometric mean - $\sqrt[n]{x_1x_2\ldots x_n}$ 
-- Median - value in middle of sorted dataset (or average of two middles)
-- Mode - most common value
-- Range - difference between max and min
+- Mean: sum of values divided by number
+	- Trimmed Mean: mean with percent of top and bottom removed
+	- Geometric mean: $\sqrt[n]{x_1x_2\ldots x_n}$ 
+- Median: value in middle of sorted dataset (or average of two middles)
+- Mode: most common value
+- Range: difference between max and min
 	- IQR/fourth spread: $Q_3-Q_1$ -- the third and first quartiles are the median of the upper and lower halves of the data
 - Variance - sum of squared differences from the mean
 - Standard Deviation - square root of variance
