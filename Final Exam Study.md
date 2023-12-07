@@ -38,7 +38,7 @@ Multiplication rule: $P(A\cap B) = P(A|B)P(B)=P(B|A)P(A)$
 A is independent of B if $P(A|B)=P(A)$, alternatively $P(A\cap B) = P(A)\times P(B)$.
 
 PMF: $f(x)=P(X=x)$ -- $f(x) \geq 0$ for all $x$ -- $\sum_{x\in\mathbb R} f(x) = 1$
-CDF: $F(x) = P(X\leq x)$ = $\sum_{\text{all } t \leq x} f(t)$--$P(a\leq X \leq b) = F(b) - F(a-)$--$P(X=a) = F(a)-F(a-)$
+CDF: $F(x) = P(X\leq x)$ = $\sum_{\text{all } t \leq x} f(t)$ -- $P(a\leq X \leq b) = F(b) - F(a-)$ -- $P(X=a) = F(a)-F(a-)$
 - ($a-$ is the largest possible number less than $a$ -- for integers, $a- = a-1$)
 
 Geometric series: if $|r| < 1, \sum_1^{\infty}ar^{x-1} = {a\over 1 - r}$
