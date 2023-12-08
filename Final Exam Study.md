@@ -102,7 +102,7 @@ $X_1\ldots X_n$ is considered a simple random sample if each variable is indepen
 - The probability of a type I error is called the alpha level,  and the probability of a type II is called the beta level. $1-\beta$ is called the power.
 - The alpha level is the same as the significance level, but the beta level must be calculated based on circumstance. A smaller alpha level results in a larger beta level.
 	- A power curve can be used to determine the beta level for conclusions about the mean.
-- For independent populations with $n\geq 30$, $Z={\bar X - \bar Y - (\mu_1-\mu_2)\over\sqrt{{\sigma_1^2\over n_1}+{\sigma_2^2\over n_2}}}$ follows a normal distribution. 
+- For independent populations with $n\geq 30$, $Z={\bar X - \bar Y - (\mu_1-\mu_2)\over\sqrt{ {{\sigma_1^2}\over n_1} +{{\sigma_2^2}\over n_2} } }$ follows a normal distribution. 
 	- Sample variances may be used if $n_1$ and $n_2$ are both $\geq 40$
 	- If both $n$ are <30, the t-distribution with $\nu=n_1+n_2-2$ may be used, except replacing  $\sigma$ with $S_p^2={n_1-1\over \nu}S_1^2+{n_2-1\over \nu}S_2^2$ (variances must be roughly equal)
 	- Or, if the populations are not independent but are both normal (or n>30), the t-distribution may be used, with $\nu={\left({S_1^2\over n_1}+{S_2^2\over n_2}\right)^2\over{(S_1^2/n_1)^2\over n_1-1}+{(S_2^2/n_2)^2\over n_2-1}}$ 
