@@ -33,9 +33,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
-ol, ul {
-	list-style: none;
-}
+
 blockquote, q {
 	quotes: none;
 }
@@ -299,13 +297,11 @@ blockquote {
 
 ul li {
   list-style-position: inside;
-  list-style: disc;
   padding-left: 20px;
 }
 
-ol li {
+li {
   list-style-position: inside;
-  list-style: decimal;
   padding-left: 3px;
 }
 
