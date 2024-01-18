@@ -1,6 +1,6 @@
 # Week 5
 ## Acorns #nature 
-![](26980FB1-6A6B-4D87-8BBC-17EDC08B2613.jpeg)
+![](M)
 
 Some species of tree spread large numbers of acorns for the purpose of creating more trees, but only a small handful actually become new saplings. The rest become food for small animals like squirrels or chipmunks, or decompose into natural fertilizer for other species of plants.
 
