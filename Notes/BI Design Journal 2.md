@@ -1,17 +1,17 @@
 # Week 5
 ## Acorns #nature 
-![](M)
+![](Media/acorns.jpeg)
 
 Some species of tree spread large numbers of acorns for the purpose of creating more trees, but only a small handful actually become new saplings. The rest become food for small animals like squirrels or chipmunks, or decompose into natural fertilizer for other species of plants.
 
 ## Large Bush #nature 
-![](B1D56B76-ED7C-4723-9E95-C5EBA06D6D54.jpeg)
+![](Media/large-bush.jpeg)
 
 This tree has evolved very dense foliage, which allows the collection of much more sunlight than the average tree. This dense foliage comes with the drawback of being much heavier, requiring a stronger trunk and branches; it also makes it more difficult for other plant species to grow beneath it.
 
 
 ## Plant with Purple Leaves #nature 
-![](129BD12E-50B0-4940-8F23-5A55B3B0ED3E.jpeg)
+![](Media/purple-leaves.jpeg)
 
 It is fairly uncommon for a plant to have purple leaves, the above being one example. Since purple light contains more energy than green light, having purple leaves effectively reduces the amount of energy that the plant collects from the sun. This adaptation is useful in bright environments, where excessive sunlight would normally threaten to damage the plant rather than feed it.
 
@@ -26,18 +26,18 @@ When there is a need for silence, such as during a ceremony or a lecture, or per
 
 # Week 6
 ## Deer #nature
-![](E1244FE9-8399-454A-A621-17438FE76108.jpeg)
+![](Media/deer.jpeg)
 
 Deer like the one above have large antlers, used for a variety of purposes. The material they are made from starts out soft, but gradually grows and hardens over the course of several months. Due to the way antlers grow, each set is almost guaranteed to be unique
 
 
 ## Bright yellow and red flowers #nature 
-![](72C82145-FCDC-41B9-8CE2-1136A8C7E998.jpeg)
+![](Media/yellow-red-flowers.jpeg)
 
 The bright flowers on this plant are useful to attract pollinators. The multiple colors appear in rings, with the red outer ring surrounding the yellow inner ring.
 
 ## The Moon #nature 
-![](84673CA7-184C-4C75-8F08-07EA5B8CA2D9.jpeg)
+![](Media/moon.jpeg)
 
 While not a living organism like a plant or an animal, the moon is still an important part of Earth's ecosystem. Many aquatic species depend on the tides it causes for their migration, mating, or distribution of food and materials. Nocturnal organisms use its light for navigation, and even humans relied on its phase and position in the sky for timekeeping, navigation, and tracking patterns of sea life for food.
 
@@ -52,17 +52,17 @@ When there is only a small area available to store items, they quickly begin to 
 
 # Week 7
 ## Dandelion #nature 
-![](AA3240AF-64DE-496C-83AF-FE35480A5E9A.jpeg)
+![](Media/dandelion.jpeg)
 
 Dandelions spread their seeds using the wind, and can thrive almost anywhere, leading to their widespread propagation. 
 
 ## Cherry Blossom #nature 
-![](1299F104-B1B4-4F8F-A09F-14FF76D06533.jpeg)
+![](Media/cherry-blossom.jpeg)
 
 These trees use their bright blossoms to attract pollinators. Their appearance also lends to their propagation as they are attractive to humans.
 
 ## Trees on a Mountain #nature 
-![](CCADBD13-9D77-4EF2-B587-7BF0020C2C21.jpeg)
+![](Media/tree-mountain.jpeg)
 
 Trees such as the species shown above tend to grow much more sparsely on one side of the valley than the other. This could be the result of high winds that affect one side of the valley more than the other, or by the direction of the sun, which could spend more of the day shining on the left than on the right. Either way, most these trees have adapted to seek out the better conditions, while the sparse vegetation on the opposite side benefits from increased sunlight and more area to grow.
 
@@ -77,17 +77,17 @@ Normal mirrors usually can't be used to see the back of your own head. Instead, 
 
 # Week 8
 ## Red Berries on Bush #nature
-![](891EBCA1-6657-4571-86C3-859FB1557981.jpeg)
+![](Media/red-berries.jpeg)
 
 The berries from this bush are bright so as to attract wildlife to eat them, allowing it to spread its seeds. In addition, new growths of branches on this plant appear dark blue and purple at first before fading to brown as bark grows in.
 
 ## Beetle #nature 
-![](EA764E38-C952-4534-B92F-AE79C4F56C77.jpeg)
+![](Media/beetle.jpeg)
 
 This beetle has long legs which allow it to move relatively quickly for its size. Its patterning could also serve a variety of purposes, though none were exhibited in this photo.
 
 ## Mountain Grasshopper #nature 
-![](31B64A0B-3232-4A53-B738-D61800E15EF3.jpeg)
+![](Media/mountain-grasshopper.jpeg)
 
 This grasshopper lives on the side of a mountain, and has a coloration adapted to the fallen leaves and orange-colored rocks of its native terrain. This adaptation protects the grasshopper from predators.
 
