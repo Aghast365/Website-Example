@@ -80,10 +80,10 @@ def injectionNtoNN(x): # gets the row and index of the corresponding tuple using
 ```
 17. $\mathbf{N\times N\times N}$
 ```python
-def injectionNNNtoN(x, y, z):
+def injectionN3toN(x, y, z):
 	return (2**x) * (3**y) * (5**z);
 
-def injectionNtoNNN(a):
+def injectionNtoN3(a):
 	x=0; y=0; z=0;
 	while(a%2 == 0):
 		a /= 2;
