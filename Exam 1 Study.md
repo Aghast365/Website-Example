@@ -1,3 +1,6 @@
+---
+layout: default
+---
 
 Definitions:
 <table><tr>
