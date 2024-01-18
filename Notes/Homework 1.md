@@ -6,12 +6,13 @@
 	- Countable: A property of a set which means it is either finite or there exists a bijection between it and the natural numbers.
 	- Bijection: A function that is both an injection and a surjection.
 	- Equinumerous: Two sets are equinumerous if they are finite and have the sane number of members, or if there exists a bijection between them.
-1. State the injection/surjection existence theorem.
+2. State the injection/surjection existence theorem.
 	- There exists an injection from A to B if and only if there exists a surjection from B to A.
-2. State the bijection existence theorem.
+3. State the bijection existence theorem.
 	- There exists a bijection between A and B if and only if there exist injections from A to B and from B to A.
 
 Of the following functions from $\mathbf R$ to $\mathbf R$, which are injective? which are surjective? Which are bijective?
+
 4. $λx.x^2$              Neither
 5. $λx.x^3$              Bijective
 6. sine                Neither
@@ -20,6 +21,7 @@ Of the following functions from $\mathbf R$ to $\mathbf R$, which are injective?
 9. $λx. e^x$              Injective
 
 In each case, tell whether there is an injection from A to B, whether there is a surjection from A to B, and whether there is a bijection from A to B.
+
 10. $A = \{10,20,30\}, B = \{8, 9, 10, 11, 12\}$
 	- Exists injection but no surjection or bijection
 11. $A = \{10, 73\}, B = \{9,109\}$
@@ -28,6 +30,7 @@ In each case, tell whether there is an injection from A to B, whether there is a
 	- Exists surjection but no injection or bijection
 
 Prove that each of the following sets is equinumerous with N by defining (1) either an injection from the given set to N or a surjection from N to the given set, and (2) either injection from N to the given set, or a surjection from the given set to N. Implement the functions you define, in Python or another programming language.
+
 13. $\mathbf N \cup \{(1,1)\}$  
 ```python
 def injectionStoN(x, y): # takes either {1,2...} or (1,1)
