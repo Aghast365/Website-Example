@@ -32,6 +32,7 @@ $$S^2 = {\sum X^2 - {(\sum X)^2\over N}\over N-1}$$
 - When dealing with a population and sample, $\bar x$ is used to talk about sample mean, $\tilde x$ is used for median, $\bar \mu$ is used for population mean, and $\tilde \mu$ for population median.
 
 Definitions:
+
 $\cup$ - union (OR)| $\cap$ - intersection (AND) | $A'$ complement (NOT)
 -|-|-
 
