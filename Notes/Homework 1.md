@@ -64,12 +64,16 @@ def injectionNtoZ(x): # accepts {1,2,...}
 16. $\mathbf N\times \mathbf N$
 ```python
 import math;
-def injectionNNtoN(x, y): # assigns each tuple to a unique integer based on its position in a 2d matrix, using diagonal rows
+def injectionNNtoN(x, y):
+	# assigns each tuple to a unique integer based on its
+	# position in a 2d matrix, using diagonal rows
 	prevRowSz = x+y-2;
 	sumPrevRowSz = (prevRowSz)*(prevRowSz+1)/2;
 	return sumPrevRowSz + x;
 
-def injectionNtoNN(x): # gets the row and index of the corresponding tuple using the inverse of the previous function
+def injectionNtoNN(x):
+	# gets the row and index of the corresponding tuple
+	# using the inverse of the previous function
 	prevRowSz = math.floor((-1 + math.sqrt(1+8*x))/2);
 	sumPrevRowSz = (prevRowSz)*(prevRowSz+1)/2;
 	rowIndex = x - sumPrevRowSz;
@@ -109,7 +113,8 @@ def injectionQtoN(x):
 	if (x>0): nat = x*2;
 	else: nat = (-x*2)+1;
 
-	# now nat and powerOfTen make a tuple of natural numbers, so using code from above to convert that to a single natural number
+	# now nat and powerOfTen make a tuple of natural numbers, so using
+	# code from above to convert that to a single natural number
 	prevRowSz = nat+powerOfTen-2;
 	sumPrevRowSz = (prevRowSz)*(prevRowSz+1)/2;
 	return sumPrevRowSz + nat;
