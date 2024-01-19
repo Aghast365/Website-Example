@@ -33,33 +33,33 @@ Prove that each of the following sets is equinumerous with N by defining (1) eit
 
 13. $\mathbf N \cup \{(1,1)\}$  
 ```python
-def injectionStoN(x, y): # takes either {1,2...} or (1,1)
-	if (x==1 and y) return 1; # if tuple recieved return 1
-	else return x+1; # returns 2... for non-tuple
+def injectionStoN(x, y=0): # takes either {1,2...} or (1,1)
+	if (x==1 and y): return 1; # if tuple recieved return 1
+	else: return x+1; # returns 2... for non-tuple
 
 def injectionNtoS(x): # takes any {1,2...}
-	if (x==1) return (1,1); # return tuple for 1
-	else return x-1; # return 1... for any 2...
+	if (x==1): return (1,1); # return tuple for 1
+	else: return x-1; # return 1... for any 2...
 ```
 14. $\mathbf N \cup \{(1,1),\ldots,(1,20)\}$
 ```python
-def injectionStoN(x, y): # takes either {1,2...} or {(1,1)...(1,20)}
-	if (x==1 and y) return y; # return 1...20 if tuple recieved
-	else return x+20; # return 21... if not tuple recieved
+def injectionStoN(x, y=0): # takes either {1,2...} or {(1,1)...(1,20)}
+	if (x==1 and y): return y; # return 1...20 if tuple recieved
+	else: return x+20; # return 21... if not tuple recieved
 
 def injectionNtoS(x): # takes {1,2...}
-	if (x<=20) return (1,x); # returns tuple for 1...20
-	else return x-20; # returns 1... starting at input 21
+	if (x<=20): return (1,x); # returns tuple for 1...20
+	else: return x-20; # returns 1... starting at input 21
 ```
 15. $\mathbf Z$
 ```python
 def injectionZtoN(x): # accepts positive and negative (and 0)
-	if (x>0) return x*2; # pos returns 2,4,6...
-	else return (-x*2)+1; # neg/zero returns 1,3,5...
+	if (x>0): return x*2; # pos returns 2,4,6...
+	else: return (-x*2)+1; # neg/zero returns 1,3,5...
 
 def injectionNtoZ(x): # accepts {1,2,...}
-	if (x%2 == 1) return -(x-1)/2; # number is odd return 0,-1,-2...
-	else return x/2; # number is even return 1,2,...
+	if (x%2 == 1): return -(x-1)/2; # number is odd return 0,-1,-2...
+	else: return x/2; # number is even return 1,2,...
 ```
 16. $\mathbf N\times \mathbf N$
 ```python
@@ -105,9 +105,10 @@ def injectionNtoN3(a):
 import math;
 def injectionQtoN(x):
 	powerOfTen = 1; # start as 1 to make the power a natural number
-	while (float(int(x)) != x):
+	while (not math.isclose(round(x), x)):
 		x *= 10;
 		powerOfTen += 1;
+	x = round(x);
 	
 	# now x is an integer, so use prior code to convert that to natural number
 	if (x>0): nat = x*2;
