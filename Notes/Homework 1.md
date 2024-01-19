@@ -22,16 +22,16 @@ Of the following functions from $\mathbf R$ to $\mathbf R$, which are injective?
 
 In each case, tell whether there is an injection from A to B, whether there is a surjection from A to B, and whether there is a bijection from A to B.
 
-10. $A = \{10,20,30\}, B = \{8, 9, 10, 11, 12\}$
+10. $A = \lbrace10,20,30\lbrace, B = \lbrace8, 9, 10, 11, 12\lbrace$
 	- Exists injection but no surjection or bijection
-11. $A = \{10, 73\}, B = \{9,109\}$
+11. $A = \lbrace10, 73\lbrace, B = \lbrace9,109\lbrace$
 	- Exists injection, surjection, and bijection
-12. $A=\{12,8,7,6\},B=\{4,3,2\}$
+12. $A= \lbrace12,8,7,6\lbrace,B=\lbrace4,3,2\lbrace$
 	- Exists surjection but no injection or bijection
 
 Prove that each of the following sets is equinumerous with N by defining (1) either an injection from the given set to N or a surjection from N to the given set, and (2) either injection from N to the given set, or a surjection from the given set to N. Implement the functions you define, in Python or another programming language.
 
-13. $\mathbf N \cup \{(1,1)\}$  
+13. $\mathbf N \cup \lbrace(1,1)\lbrace$  
 ```python
 def injectionStoN(x, y=0): # takes either {1,2...} or (1,1)
 	if (x==1 and y): return 1; # if tuple recieved return 1
@@ -41,7 +41,7 @@ def injectionNtoS(x): # takes any {1,2...}
 	if (x==1): return (1,1); # return tuple for 1
 	else: return x-1; # return 1... for any 2...
 ```
-14. $\mathbf N \cup \{(1,1),\ldots,(1,20)\}$
+14. $\mathbf N \cup \lbrace(1,1),\ldots,(1,20)\lbrace$
 ```python
 def injectionStoN(x, y=0): # takes either {1,2...} or {(1,1)...(1,20)}
 	if (x==1 and y): return y; # return 1...20 if tuple recieved
