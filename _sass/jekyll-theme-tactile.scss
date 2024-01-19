@@ -295,13 +295,15 @@ blockquote {
   border-left: 10px solid #e9e9e9;
 }
 
-ul li {
+ul > li {
   list-style-position: inside;
+  list-style: disc;
   padding-left: 20px;
 }
 
-li {
+ol > li {
   list-style-position: inside;
+  list-style: decimal;
   padding-left: 3px;
 }
 
@@ -363,11 +365,11 @@ footer a:hover {
     width: 94%;
     margin: 0 auto;
   }
-  ul li {
+  ul > li {
     margin-left: 10px;
     padding-left: 10px;
   }
-  ol li {
+  ol > li {
     margin-left: 10px;
   }
 }
