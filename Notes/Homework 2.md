@@ -13,11 +13,11 @@ This means that theoretically, for any row $S(x)$ that covers the sequence $T$ f
 However, while this function $S$ can represent any finite sequence of numbers defined by any $T$, it is provably impossible for any function $S$ to contain all possible infinite sequences defined by every possible $T$. Using an example:
 
 $$\begin{matrix}
-\boxed1&1&8&4&7&\ldots\\
-0&\boxed6&9&7&7&\ldots\\
-3&1&\boxed5&2&8&\ldots\\
-1&4&8&\boxed8&5&\ldots\\
-0&9&7&6&\boxed4&\ldots\\
+\boxed1&1&8&4&7&\ldots \\\\
+0&\boxed6&9&7&7&\ldots \\\\
+3&1&\boxed5&2&8&\ldots \\\\
+1&4&8&\boxed8&5&\ldots \\\\
+0&9&7&6&\boxed4&\ldots \\\\
 \vdots&\vdots&\vdots&\vdots&\vdots&\ddots
 \end{matrix}$$
 
