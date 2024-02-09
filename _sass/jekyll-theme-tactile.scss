@@ -381,6 +381,10 @@ footer a:hover {
 @media only screen and (max-width: 479px) { }
 
 @media print { 
+	@page {
+		size: letter;
+		margin: 0;
+	}
 	code, pre {
 		white-space: pre-wrap; 
 		word-wrap: break-word;
