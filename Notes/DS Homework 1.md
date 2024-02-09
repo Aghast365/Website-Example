@@ -148,19 +148,24 @@ big-O: $O(n\log n)$
 1) $4n^3 + 3n^2 + 2n - 5$
 
  big-Θ: $Θ(n^3)$
+ 
 2) $n\log n + 3n - 15$
 
  big-Θ: $Θ(n\log n)$
+ 
 ## 3.2
 1) $n^3\log(3n) + 2n^4 + 3n^2 + 127$
 
  big-O: $O(n^4)$
+ 
 2) $\sqrt{2n} + 30\log(4n)^2 + 27n - 3$
 
  big-O: $O(\sqrt{n})$
+ 
 3) $(n+1)! + 2^n$
 
  big-O: $O(n!)$
+ 
 4) $\sqrt[3]{n^2} + 3n\log^2(2n) + 4n^{(6/7)}$
 
  big-O: $O(n\log^2 n)$
