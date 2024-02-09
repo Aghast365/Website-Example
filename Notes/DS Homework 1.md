@@ -103,6 +103,7 @@ for (i = 1; i <= n; i *= 2) {
 }
 ```
 Time complexity: $7(2n-1)$
+
 big-O: $O(n)$
 
 ## 2.2
@@ -114,6 +115,7 @@ for (i = 1; i <= n; i *= 2) {
 }
 ```
 Time complexity: $9(\log_2 n)(\log_2 n + 1)/2$
+
 big-O: $O(\log^2 n)$
 
 ## 2.3
@@ -125,6 +127,7 @@ for (i = 1; i < n; i *= 3) {
 }
 ```
 Time complexity: $5[(\log_3 n - 1)(\log_3 n - 2)/(2\log_3 2) - \log_3 n + 1]$
+
 big-O: $O(\log^2 n)$
 
 ## 2.4
@@ -136,22 +139,29 @@ for (i = 1; i <= n; i++) {
 }
 ```
 Time complexity: $3n\log n$
+
 big-O: $O(n\log n)$
 
 ---
 # Problem 3
 ## 3.1
 1) $4n^3 + 3n^2 + 2n - 5$
-	big-Θ: $Θ(n^3)$
+
+ big-Θ: $Θ(n^3)$
 2) $n\log n + 3n - 15$
-	big-Θ: $Θ(n\log n)$
+
+ big-Θ: $Θ(n\log n)$
 ## 3.2
 1) $n^3\log(3n) + 2n^4 + 3n^2 + 127$
-	big-O: $O(n^4)$
+
+ big-O: $O(n^4)$
 2) $\sqrt{2n} + 30\log(4n)^2 + 27n - 3$
-	big-O: $O(\sqrt{n})$
+
+ big-O: $O(\sqrt{n})$
 3) $(n+1)! + 2^n$
-	big-O: $O(n!)$
+
+ big-O: $O(n!)$
 4) $\sqrt[3]{n^2} + 3n\log^2(2n) + 4n^{(6/7)}$
-	big-O: $O(n\log^2 n)$
+
+ big-O: $O(n\log^2 n)$
 	
