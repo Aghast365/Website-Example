@@ -1,6 +1,6 @@
 # Problem 1
 Code:
-```C
+```c
 #include <stdio.h>
 #include <stdlib.h>
 
