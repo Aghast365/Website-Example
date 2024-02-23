@@ -49,14 +49,14 @@ C1 &= C(X0 + X1) + X0X1
 $$
 \begin{array}{r}
 \llap{C0 - }1\\\\\llap{A0 - }2\\\\\llap{A1 - }3\\\\\llap{B0 - }4\\\\\llap{B1 - }5\\\\6\\\\7\\\\8\\\\9\\\\\llap{Ground - }10
-\end{array}\\
+\end{array}\\;
 \begin{array}{|c|}
 \hline 
 \\\\ \\\\ \\\\ \\\\
 \text{2-Bit} \\\\ \text{  Adder  } 
 \\\\ \\\\ \\\\ \\\\
 \\\\\hline
-\end{array}\\
+\end{array}\\;
 \begin{array}{c}
 20\rlap{ - +5V}\\\\19\rlap{ - S0}\\\\18\rlap{ - S1}\\\\17\rlap{ - S2}\\\\16\rlap{ - C1}\\\\15\\\\14\\\\13\\\\12\\\\11
 \end{array}
