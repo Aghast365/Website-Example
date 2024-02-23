@@ -1,6 +1,7 @@
 > Design and construct a 2-bit adder with carry input, using the ATF16v8C PLD to accomplish the output functions.
 
 1. Approach to the problem
+
 My approach to solving this problem was extrapolated from the demonstrations given in class. By placing two full adder circuits in series, (each combining two bits and a carry,) a 2-bit adder can be constructed without needing a large and complex karnaugh map. Once the PLD is fused with this program, the provided 5-bit switch can be used as input and a set of 3 LEDs can be used as output.
 
 2. Truth Table, Karnaugh Maps, & Boolean Equations
