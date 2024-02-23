@@ -65,9 +65,9 @@ $$
 4. WinCupl Code
 ```c
 Name 2BitAdder ;
-Date 22/02/2024 ;
-Designer Daniel A;
-Company TTU;
+Date xxx ;
+Designer xxx;
+Company xxx;
 Device g16v8a ;
 
 /*---------------INPUT----------------*/
