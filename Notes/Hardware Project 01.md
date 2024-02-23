@@ -68,7 +68,7 @@ Name 2BitAdder ;
 Date 22/02/2024 ;
 Designer Daniel A;
 Company TTU;
-Device g16v8cp ;
+Device g16v8a ;
 
 /*---------------INPUT----------------*/
 PIN  1 = c0 ; /* carry input          */
