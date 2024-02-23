@@ -49,16 +49,16 @@ C1 &= C(X0 + X1) + X0X1
 $$
 \begin{array}{r}
 \llap{C0 - }1\\\\\llap{A0 - }2\\\\\llap{A1 - }3\\\\\llap{B0 - }4\\\\\llap{B1 - }5\\\\6\\\\7\\\\8\\\\9\\\\\llap{Ground - }10
-\end{array}\;
+\end{array}\\
 \begin{array}{|c|}
 \hline 
 \\\\ \\\\ \\\\ \\\\
 \text{2-Bit} \\\\ \text{  Adder  } 
 \\\\ \\\\ \\\\ \\\\
 \\\\\hline
-\end{array}\;
+\end{array}\\
 \begin{array}{c}
-20\rlap{ - +5V}\\\\19\rlap{ - S0}\\\\18\rlap{ - S2}\\\\17\rlap{ - S1}\\\\16\rlap{ - C1}\\\\15\\\\14\\\\13\\\\12\\\\11
+20\rlap{ - +5V}\\\\19\rlap{ - S0}\\\\18\rlap{ - S1}\\\\17\rlap{ - S2}\\\\16\rlap{ - C1}\\\\15\\\\14\\\\13\\\\12\\\\11
 \end{array}
 $$
 
@@ -79,18 +79,18 @@ PIN  5 = b1 ; /* "                    */
 
 /*---------------OUTPUT---------------*/
 PIN  19 = s0 ; /* output (MSD)        */
-PIN  18 = s2 ; /* "                   */
-PIN  17 = s1 ; /* "                   */
+PIN  18 = s1 ; /* "                   */
+PIN  17 = s2 ; /* "                   */
 PIN  16 = c1 ; /* carry from first adder (internal) */
 
 /*---------BOOLEAN FUNCTIONS----------*/
 	/* First adder */
-	s2 = c0 $ a0 $ b0 ;
-	c1 = c0 & (a0 # b0) # a0 & b0 ;
+	s2 = c0 $ a1 $ b1 ;
+	c1 = c0 & (a1 # b1) # a1 & b1 ;
 
 	/* Second adder */
-	s1 = c1 $ a1 $ b1 ;	
-	s0 = c1 & (a1 $ b1) # a1 & b1 ;
+	s1 = c1 $ a0 $ b0 ;	
+	s0 = c1 & (a0 $ b0) # a0 & b0 ;
 	
 ```
 5. Circuit in Operation
