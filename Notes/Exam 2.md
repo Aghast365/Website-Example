@@ -19,7 +19,7 @@ $$\begin{align}&\Sigma =\{a\} \quad \Gamma = \{S,X,Y,X_1,X_2,X_3\} \\\\S&\to \ep
 
 ---
 ## Section 3
-**Q4: Give a pushdown automata for strings of a’s and b’s with more a’s than b’s, and the total number of characters is evenly divisible by 3. $$L=\left\{ w\in\{a,b\}^*:\displaylines{\text{len}(w) \% 3 = 0\\\\ \text{and}\\\\|a(w)|>|b(w)|} \right\}$$(a(w) and b(w) are “the number of a’s in w”, and “the number of b’s in w” respectively)**
+**Q4: Give a pushdown automata for strings of a’s and b’s with more a’s than b’s, and the total number of characters is evenly divisible by 3. $$L=\left\\{ w\in\{a,b\}^*:\displaylines{\text{len}(w) \% 3 = 0\\\\ \text{and}\\\\|a(w)|>|b(w)|} \right\\}$$(a(w) and b(w) are “the number of a’s in w”, and “the number of b’s in w” respectively)**
 
 **Q5: Given the following PDA G: Describe (in terms of characters and structure) the kinds of strings that will be in L(G).**
 
