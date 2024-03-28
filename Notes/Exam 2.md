@@ -2,24 +2,24 @@
 **Q1: The following is a definition for the language of L(G). Is the definition correct? If not, explain what is incorrect with it.**
 > Let G = (V, Σ, R, S) be a context-free grammar. The language of G is defined to be the set of all strings in $\mathcal P$(Σ) that can be derived in one step from the start variable S: $$L(G) = \{w ∈ \mathcal P(Σ): S \Rightarrow w\}$$Where S $\Rightarrow$ w means w can be derived in one step from S.
 
-- This definition is not correct. The language of a context-free grammar is defined as all strings derived from the start variable in any number of steps, $S\xRightarrow* w$, not just a single step. 
+- This definition is not correct. The language of a context-free grammar is defined as all strings derived from the start variable in any number of steps, $S{*\atop \Rightarrow} w$, not just a single step. 
 - In addition, strings in a language may have the same character appear more than once, while each member of a powerset may only have one occurrance of each possible character, so it should be that $w\in\Sigma^*$.
 
-**Q2: Given the following context free grammar:** $$\begin{align}G: &\quad \Sigma=\{a,b\}\\S&\to aSa|B \\B&\to bB|Bb|b\end{align}$$ **What kinds of strings (in terms of characters and structure) are in L(G)?**
+**Q2: Given the following context free grammar:** $$\begin{align}G: &\quad \Sigma=\{a,b\}\\\\S&\to aSa|B \\\\B&\to bB|Bb|b\end{align}$$ **What kinds of strings (in terms of characters and structure) are in L(G)?**
 
 - The language $L(G)$ consists of strings containing the characters $a$ and $b$. 
 - All strings in this language will start and end with the same number of zero or more $a$'s, and have one or more $b$'s in the middle.
 
 ---
 ## Section 2
-**Q3: Given the follow context free grammar G: $$\begin{align}&\Sigma =\{a\} \quad \Gamma = \{S,X,Y,X_1,X_2\} \\S&\to \epsilon|YY|XY|YX|aa|YX_1\\X&\to YY|XY|YX|aa|YX_2\\Y&\to aa\\X_1&\to XY \kern 3em X_2\to XY\end{align}$$Is G in Chomsky Normal Form? If not, convert it into Chomsky Normal Form.**
+**Q3: Given the follow context free grammar G: $$\begin{align}&\Sigma =\{a\} \quad \Gamma = \{S,X,Y,X_1,X_2\} \\\\S&\to \epsilon|YY|XY|YX|aa|YX_1\\\\X&\to YY|XY|YX|aa|YX_2\\\\Y&\to aa\\\\X_1&\to XY \kern 3em X_2\to XY\end{align}$$Is G in Chomsky Normal Form? If not, convert it into Chomsky Normal Form.**
 
 - $G$ is not in Chomsky normal form, as it contains rules with multiple non-terminals on one side. This may be addressed by adding the variable $X_3$ and the rule $X_3\to a$, then replacing the occurances of $a$ in the previous rules with $X_3$:
-$$\begin{align}&\Sigma =\{a\} \quad \Gamma = \{S,X,Y,X_1,X_2,X_3\} \\S&\to \epsilon|YY|XY|YX|X_3X_3|YX_1\\X&\to YY|XY|YX|X_3X_3|YX_2\\Y&\to X_3X_3\\X_1&\to XY \kern 3em X_2\to XY\\X_3&\to a\end{align}$$
+$$\begin{align}&\Sigma =\{a\} \quad \Gamma = \{S,X,Y,X_1,X_2,X_3\} \\\\S&\to \epsilon|YY|XY|YX|X_3X_3|YX_1\\\\X&\to YY|XY|YX|X_3X_3|YX_2\\\\Y&\to X_3X_3\\\\X_1&\to XY \kern 3em X_2\to XY\\\\X_3&\to a\end{align}$$
 
 ---
 ## Section 3
-**Q4: Give a pushdown automata for strings of a’s and b’s with more a’s than b’s, and the total number of characters is evenly divisible by 3. $$L=\left\{w\in\{a,b\}^*:\displaylines{\text{len}(w) \% 3 = 0\\ \text{and}\\|a(w)|>|b(w)|}\right\}$$(a(w) and b(w) are “the number of a’s in w”, and “the number of b’s in w” respectively)**
+**Q4: Give a pushdown automata for strings of a’s and b’s with more a’s than b’s, and the total number of characters is evenly divisible by 3. $$L=\left\{ w\in\{a,b\}^*:\displaylines{\text{len}(w) \% 3 = 0\\\\ \text{and}\\\\|a(w)|>|b(w)|} \right\}$$(a(w) and b(w) are “the number of a’s in w”, and “the number of b’s in w” respectively)**
 
 **Q5: Given the following PDA G: Describe (in terms of characters and structure) the kinds of strings that will be in L(G).**
 
@@ -189,7 +189,7 @@ $$\begin{align}&\Sigma =\{a\} \quad \Gamma = \{S,X,Y,X_1,X_2,X_3\} \\S&\to \epsi
 **For questions in section 5, determine whether each language L is context free or not. If it is context free, provide a context free grammar. If it is not context free, provide a proof with the pumping lemma for context free languages.**
 
 **Q8:** $$L=\{a^nb^m: n\geq 0, m>n\geq 0\}$$
-- $G=(V,\Sigma,R,S)$; $V=\{S,A,B\}$; $\Sigma = \{a,b\}$; R= $$\begin{align}S&\to A\\A&\to aA|abB \\B&\to bB|b\end{align}$$
+- $G=(V,\Sigma,R,S)$; $V=\{S,A,B\}$; $\Sigma = \{a,b\}$; R= $$\begin{align}S&\to A\\\\A&\to aA|abB \\\\B&\to bB|b\end{align}$$
 **Q9:** $$L=\{a^nb^n: n\geq 0\}$$
 - $G=(V,\Sigma,R,S)$; $V=\{S\}$; $\Sigma = \{a,b\}$; R= $$\begin{align}S&\to aSb|\epsilon\end{align}$$
 **Q10:** $$L=\{a^nb^nc^n:n\geq 0\}$$
