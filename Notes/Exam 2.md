@@ -1,25 +1,25 @@
 ## Section 1
 **Q1: The following is a definition for the language of L(G). Is the definition correct? If not, explain what is incorrect with it.**
-> Let G = (V, Σ, R, S) be a context-free grammar. The language of G is defined to be the set of all strings in $\mathcal P$(Σ) that can be derived in one step from the start variable S: $$L(G) = \\{w ∈ \mathcal P(Σ): S \Rightarrow w\}$$Where S $\Rightarrow$ w means w can be derived in one step from S.
+> Let G = (V, Σ, R, S) be a context-free grammar. The language of G is defined to be the set of all strings in $\mathcal P$(Σ) that can be derived in one step from the start variable S: $$L(G) = \\{w ∈ \mathcal P(Σ): S \Rightarrow w\\}$$Where S $\Rightarrow$ w means w can be derived in one step from S.
 
 - This definition is not correct. The language of a context-free grammar is defined as all strings derived from the start variable in any number of steps, $S{*\atop \Rightarrow} w$, not just a single step. 
 - In addition, strings in a language may have the same character appear more than once, while each member of a powerset may only have one occurrance of each possible character, so it should be that $w\in\Sigma^*$.
 
-**Q2: Given the following context free grammar:** $$\begin{align}G: &\quad \Sigma=\\{a,b\}\\\\S&\to aSa|B \\\\B&\to bB|Bb|b\end{align}$$ **What kinds of strings (in terms of characters and structure) are in L(G)?**
+**Q2: Given the following context free grammar:** $$\begin{align}G: &\quad \Sigma=\\{a,b\\}\\\\S&\to aSa|B \\\\B&\to bB|Bb|b\end{align}$$ **What kinds of strings (in terms of characters and structure) are in L(G)?**
 
 - The language $L(G)$ consists of strings containing the characters $a$ and $b$. 
 - All strings in this language will start and end with the same number of zero or more $a$'s, and have one or more $b$'s in the middle.
 
 ---
 ## Section 2
-**Q3: Given the follow context free grammar G: $$\begin{align}&\Sigma =\\{a\} \quad \Gamma = \\{S,X,Y,X_1,X_2\} \\\\S&\to \epsilon|YY|XY|YX|aa|YX_1\\\\X&\to YY|XY|YX|aa|YX_2\\\\Y&\to aa\\\\X_1&\to XY \kern 3em X_2\to XY\end{align}$$Is G in Chomsky Normal Form? If not, convert it into Chomsky Normal Form.**
+**Q3: Given the follow context free grammar G: $$\begin{align}&\Sigma =\\{a\\} \quad \Gamma = \\{S,X,Y,X_1,X_2\\} \\\\S&\to \epsilon|YY|XY|YX|aa|YX_1\\\\X&\to YY|XY|YX|aa|YX_2\\\\Y&\to aa\\\\X_1&\to XY \kern 3em X_2\to XY\end{align}$$Is G in Chomsky Normal Form? If not, convert it into Chomsky Normal Form.**
 
 - $G$ is not in Chomsky normal form, as it contains rules with multiple non-terminals on one side. This may be addressed by adding the variable $X_3$ and the rule $X_3\to a$, then replacing the occurances of $a$ in the previous rules with $X_3$:
-$$\begin{align}&\Sigma =\\{a\} \quad \Gamma = \\{S,X,Y,X_1,X_2,X_3\} \\\\S&\to \epsilon|YY|XY|YX|X_3X_3|YX_1\\\\X&\to YY|XY|YX|X_3X_3|YX_2\\\\Y&\to X_3X_3\\\\X_1&\to XY \kern 3em X_2\to XY\\\\X_3&\to a\end{align}$$
+$$\begin{align}&\Sigma =\\{a\\} \quad \Gamma = \\{S,X,Y,X_1,X_2,X_3\\} \\\\S&\to \epsilon|YY|XY|YX|X_3X_3|YX_1\\\\X&\to YY|XY|YX|X_3X_3|YX_2\\\\Y&\to X_3X_3\\\\X_1&\to XY \kern 3em X_2\to XY\\\\X_3&\to a\end{align}$$
 
 ---
 ## Section 3
-**Q4: Give a pushdown automata for strings of a’s and b’s with more a’s than b’s, and the total number of characters is evenly divisible by 3. $$L=\left\\{ w\in\\{a,b\}^*:\displaylines{\text{len}(w) \% 3 = 0\\\\ \text{and}\\\\|a(w)|>|b(w)|} \right\}$$(a(w) and b(w) are “the number of a’s in w”, and “the number of b’s in w” respectively)**
+**Q4: Give a pushdown automata for strings of a’s and b’s with more a’s than b’s, and the total number of characters is evenly divisible by 3. $$L=\left\\{ w\in\\{a,b\\}^*:\displaylines{\text{len}(w) \% 3 = 0\\\\ \text{and}\\\\|a(w)|>|b(w)|} \right\\}$$(a(w) and b(w) are “the number of a’s in w”, and “the number of b’s in w” respectively)**
 
 **Q5: Given the following PDA G: Describe (in terms of characters and structure) the kinds of strings that will be in L(G).**
 
@@ -178,21 +178,21 @@ $$\begin{align}&\Sigma =\\{a\} \quad \Gamma = \\{S,X,Y,X_1,X_2,X_3\} \\\\S&\to \
 
 ---
 ## Section 4
-**Q6: Given the binary function f: A x B -> C where A, B, and C are sets: $$f(A,B)=\\{w:w\in A \text{ or } w\in B\}$$Are context free languages closed under f?**
+**Q6: Given the binary function f: A x B -> C where A, B, and C are sets: $$f(A,B)=\\{w:w\in A \text{ or } w\in B\\}$$Are context free languages closed under f?**
 - The function $f$ is equivalent to the union operation. If $A$ and $B$ are context-free, there exist languages $G_A$ and $G_B$ that describe them, with start variables $S_A$ and $S_B$. Then, a context-free grammar describing $C$ may be produced by including all rules and variables from $G_A$ and $G_B$, plus its own start variable $S_C$ with the rule $S_C\to S_A|S_B$. Therefore, context-free languages are closed under this function.
 
-**Q7: The following language L is over binary strings. We can consider each string to have a binary value, i.e.: “1001” = 1001 in binary, and “1001” % 2 == 1.$$L=\\{w\in\\{0,1\}^* : w\leq n \text{ and } w\%2=1\}$$Given some natural number n greater than 0, is L context free? Prove your answer.**
+**Q7: The following language L is over binary strings. We can consider each string to have a binary value, i.e.: “1001” = 1001 in binary, and “1001” % 2 == 1.$$L=\\{w\in\\{0,1\\}^* : w\leq n \text{ and } w\%2=1\\}$$Given some natural number n greater than 0, is L context free? Prove your answer.**
  - Because all strings in $L$ have a length less than $n$, it accepts only a finite number of strings. Therefore, a regular language accepting $L$ may be constructed as the union of regular expressions, where each regular expression describes some string in $L$. Then, becuase all regular languages are also context-free, $L$ must be context-free.
 
 ---
 ## Section 5
 **For questions in section 5, determine whether each language L is context free or not. If it is context free, provide a context free grammar. If it is not context free, provide a proof with the pumping lemma for context free languages.**
 
-**Q8:** $$L=\\{a^nb^m: n\geq 0, m>n\geq 0\}$$
-- $G=(V,\Sigma,R,S)$; $V=\\{S,A,B\}$; $\Sigma = \\{a,b\}$; R= $$\begin{align}S&\to A\\\\A&\to aA|abB \\\\B&\to bB|b\end{align}$$
-**Q9:** $$L=\\{a^nb^n: n\geq 0\}$$
-- $G=(V,\Sigma,R,S)$; $V=\\{S\}$; $\Sigma = \\{a,b\}$; R= $$\begin{align}S&\to aSb|\epsilon\end{align}$$
-**Q10:** $$L=\\{a^nb^nc^n:n\geq 0\}$$
+**Q8:** $$L=\\{a^nb^m: n\geq 0, m>n\geq 0\\}$$
+- $G=(V,\Sigma,R,S)$; $V=\\{S,A,B\\}$; $\Sigma = \\{a,b\\}$; R= $$\begin{align}S&\to A\\\\A&\to aA|abB \\\\B&\to bB|b\end{align}$$
+**Q9:** $$L=\\{a^nb^n: n\geq 0\\}$$
+- $G=(V,\Sigma,R,S)$; $V=\\{S\\}$; $\Sigma = \\{a,b\\}$; R= $$\begin{align}S&\to aSb|\epsilon\end{align}$$
+**Q10:** $$L=\\{a^nb^nc^n:n\geq 0\\}$$
 - Under the pumping lemma for context-free languages, if $L$ is context-free, then there exists some integer $p\geq 1$ such that for every string $s\in L$ where $|s|\geq p$, the string may be written $s=uvxyz$, where 
 	- $|vy|\geq 1$
 	- $|vxy|\leq p$
