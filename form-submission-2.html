@@ -513,14 +513,14 @@
 		}
 		csvContent += "\n";
 		
-		ch.innerHTML = csvContent; ch.style.maxWidth="100%"; ch.style.overflow="scroll";
+		//ch.innerHTML = csvContent; ch.style.maxWidth="100%"; ch.style.overflow="scroll";
 		
 		let encodedUri = encodeURI(csvContent);
 		let link = document.querySelector("#download") || document.createElement("a");
 		link.setAttribute("href", encodedUri);
 		link.setAttribute("download", "my_data.csv");
 		link.setAttribute("id", "download");
-		link.innerHTML = "download data";
+		//link.innerHTML = "download data";
 		document.body.appendChild(link);
 		
 
