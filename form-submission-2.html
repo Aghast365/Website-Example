@@ -54,6 +54,17 @@
 	#reset {
 		float:right;
 	}
+	#invalid {
+		color: red;
+	}
+	#download-button {
+		float:right;
+	}
+	pre {
+		clear:right;
+		display: none;
+	}
+	
 </style>
 
 </head>
@@ -375,7 +386,9 @@
 		</fieldset>
 		
 		
-		<input type='submit' value='Submit' id='submit'>
+		<input type='submit' value='Submit' id='submit'> 
+		<span id="invalid"></span> 
+		<button id="download-button">Show Results</button>
 		
 
 	</form>
@@ -403,6 +416,7 @@
 	</datalist>
 	
 <pre id='changes'></pre>
+<a id="download"></a>
 <script>
 	let pending = [];
 	
@@ -493,11 +507,6 @@
 				'off-campus-healthy-reason',
 				'off-campus-healthy-reason-other'
 	]
-	let csvContent = "data:text/csv;charset=utf-8,";
-	for (let property of properties) {
-		csvContent += property + ",";
-	}
-	csvContent += "\n";
 	
 	function handleSubmit(e) {
 		e.preventDefault();
@@ -507,22 +516,28 @@
 		
 		let formData = new FormData(f);
 		
+		let csvContent = "data:text/csv;charset=utf-8,";
+		for (let property of properties) 	{
+			csvContent += property + ",";	
+		}
+		csvContent += "\n";
+		
 		for (let property of properties) {
 			let data = formData.getAll(property);
 			csvContent += String(data).includes(",") ? "[" + data + "]," : data + ",";
 		}
 		csvContent += "\n";
 		
-		//ch.innerHTML = csvContent; ch.style.maxWidth="100%"; ch.style.overflow="scroll";
+		ch.innerHTML = csvContent; ch.style.maxWidth="100%"; ch.style.overflow="scroll";
 		
 		let encodedUri = encodeURI(csvContent);
-		let link = document.querySelector("#download") || document.createElement("a");
+		let link = document.querySelector("#download");
 		link.setAttribute("href", encodedUri);
-		link.setAttribute("download", "my_data.csv");
+		link.setAttribute("download", "survey_data.csv");
 		link.setAttribute("id", "download");
-		//link.innerHTML = "download data";
+		// link.innerHTML = "download data";
 		document.body.appendChild(link);
-		
+		document.querySelector("#invalid").innerHTML = "";
 
 		link.click();
 	}
@@ -536,6 +551,11 @@
 	
 	}
 	
+	function handleInvalid(e) {
+		let invalid = document.querySelector("#invalid");
+		invalid.innerHTML = "Please answer all questions";
+	
+	}
 		
 	let watchedRadios = document.querySelectorAll(":has([data-show-if-checked])>:is(input[type='radio'], input[type='checkbox']), :has([data-enable-if-checked])>:is(input[type='radio'], input[type='checkbox'])");
 	
@@ -548,12 +568,22 @@
 		slider.addEventListener("input", handleSliderChange);
 	}
 	
-	let setupEvent = new Event("change");
-	for (let radio of watchedRadios) {
-		radio.dispatchEvent(setupEvent);
+	function setup() {
+		let setupEvent = new Event("change");
+		for (let input of document.querySelectorAll("input")) {
+			input.dispatchEvent(setupEvent);
+		}
+		document.querySelector("#invalid").innerHTML = "";
 	}
 	
-	document.querySelector("#survey").addEventListener("submit", handleSubmit);
+	let survey = document.querySelector("#survey");
+	survey.addEventListener("submit", handleSubmit);
+	survey.addEventListener("invalid", handleInvalid, true);
+	survey.addEventListener("reset", ()=>{setTimeout(setup, 100)});
+	
+	document.querySelector("#download-button").addEventListener("click", (e)=>{e.preventDefault(); let ch = document.querySelector("#changes"); ch.style.display = ch.style.display == 'block' ? 'none' : 'block'});
+	
+	setup();
 		
 </script>
 </body>
