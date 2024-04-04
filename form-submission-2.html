@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Campus Dining Survey</title>
+<link rel="favicon" src="survey-favicon.ico" />
+<style>
+	.question {
+		border: 2px solid black;
+	}
+	fieldset {
+		clear: both;
+		margin: 10px 2px 2px 2px;
+		padding: 2px;
+		overflow:hidden;
+		max-height:1000px;
+		transition: max-height 1s linear, margin-top .5s linear, border 50ms linear;
+	}
+	fieldset:first-of-type {
+		margin: 2px;
+	}
+	.subfield {
+		margin-left: 20px;
+	}
+	:is(.radio, .checkbox)>label:not(label:last-of-type)::after {
+		display: block;
+		content: '';
+	}
+	.sub-question {
+		display: block;
+		border: none;
+		max-height: 200px;
+		transition: max-height 1s linear, margin-top 100ms linear;
+	}
+	:is(.true-false, .select, .number)>label:first-of-type::after {
+		display: block;
+		content: '';
+	}
+	.two-col-div {
+		width: fit-content;
+	}
+	.two-col-div input, .two-col-div select {
+		float: right;
+		margin-left: 5px;
+	}
+	output {
+		display: block;
+		float: right;
+		width: 9em;
+	}
+	
+	html {
+		padding-bottom: 50%;
+	}
+	#reset {
+		float:right;
+	}
+</style>
+
+</head>
+<body>
+	<h1>Tech Comm Survey</h1>
+	<hr>
+
+	<form id='survey'>
+		<input type='reset' value='Reset' id='reset'>
+		<fieldset id='has-dining-plan' class='question true-false'>
+			<label>Do you currently have a Texas Tech dining plan?</label>
+			<input required type='radio' name='has-dining-plan' id='has-dining-plan-t' value="true" data-show-if-checked='dining-plan'/>
+			<label for='has-dining-plan-t'>Yes</label>
+			
+			<input required type='radio' name='has-dining-plan' id='has-dining-plan-f' value="false" />
+			<label for='has-dining-plan-f'>No</label>
+		</fieldset>
+		
+		<fieldset id="dining-plan" class='subfield'>
+			<fieldset id='purchase-reason' class='question radio radio-with-other'>
+				<label>What was your biggest reason for purchasing a dining plan this semester?</label>
+				
+				<input required type='radio' name='purchase-reason' id='purchase-reason-1' value='required' />
+				<label for='purchase-reason-1'>Because it is required when living in the dorms</label>
+				
+				<input required type='radio' name='purchase-reason' id='purchase-reason-2' value='discounts' />
+				<label for='purchase-reason-2'>Because of the discounts for food on campus</label>
+				
+				<input required type='radio' name='purchase-reason' id='purchase-reason-3' value='convenience' />
+				<label for='purchase-reason-3'>Because of convenience when eating on campus</label>
+				
+				<input required type='radio' name='purchase-reason' id='purchase-reason-4' value='other' data-enable-if-checked='purchase-reason-other' />
+				<label for='purchase-reason-4'>Other</label>
+				
+				<input type='text' class='other-textbox' name='purchase-reason-other' id='purchase-reason-other' placeholder="Reason (optional)"/>
+					
+			</fieldset>
+			
+			<fieldset id='plan-type' class='question radio'>
+				<label>What type of dining plan do you have?</label>
+				<input required type='radio' name='plan-type' value='double-t' id='plan-type-1' />
+				<label>Double T (733)</label>
+				
+				<input required type='radio' name='plan-type' value='matador' id='plan-type-2' />
+				<label>Matador (1005)</label>
+				
+				<input required type='radio' name='plan-type' value='red-black' id='plan-type-4' />
+				<label>Red & Black (1225)</label>
+				
+				<input required type='radio' name='plan-type' value='commuter' id='plan-type-4' />
+				<label>Commuter</label>
+			</fieldset>
+			
+			<fieldset id='ran-out' class='question true-false'>
+				<label>Have you ever run out of dining bucks in your plan?</label>
+				<input required type='radio' name='ran-out' value='true' id='ran-out-t'>
+				<label>Yes</label>
+				<input required type='radio' name='ran-out' value='false' id='ran-out-f'>
+				<label>No</label>
+			</fieldset>
+			
+			<fieldset id='refilled' class='question true-false'>
+				<label>Have you ever added more dining bucks to your plan?</label>
+				<input required type='radio' name='refilled' value='true' id='refilled-t'>
+				<label>Yes</label>
+				<input required type='radio' name='refilled' value='false' id='refilled-f'>
+				<label>No</label>
+			</fieldset>
+			
+			<fieldset id='would-purchase-again' class='question true-false'>
+				<label>Even if it were not required, would you still choose to purchase a dining plan in later semesters?</label>
+				<input required type='radio' name='would-purchase-again' value='true' id='would-purchase-again-t'>
+				<label>Yes</label>
+				<input required type='radio' name='would-purchase-again' value='false' id='would-purchase-again-f'>
+				<label>No</label>
+			</fieldset>
+		</fieldset>
+		
+		<fieldset id="eats-on-campus" class='question true-false'>
+			<label>Do you eat on-campus often? (at least once a month)</label>
+			<input required type='radio' name='eats-on-campus' id='eats-on-campus-t' value="true" data-show-if-checked='on-campus'/>
+			<label for='eats-on-campus-t'>Yes</label>
+			
+			<input required type='radio' name='eats-on-campus' id='eats-on-campus-f' value="false" />
+			<label for='eats-on-campus-f'>No</label>
+		</fieldset>
+		
+		<fieldset id="on-campus" class='subfield'>
+			<fieldset id="on-campus-locations" class='question checkbox checkbox-with-other'>
+				<label>Which <u>two</u> locations do you get food from most often?</label>
+				
+				<input type='checkbox' name='on-campus-locations' id='on-campus-locations-1' value='sub' data-show-if-checked="on-campus-spending-1 on-campus-frequency-1"/>
+				<label>SUB</label>
+				<input type='checkbox' name='on-campus-locations' id='on-campus-locations-2' value='fresh-plate' data-show-if-checked="on-campus-spending-2 on-campus-frequency-2"/>
+				<label>Fresh Plate</label>
+				<input type='checkbox' name='on-campus-locations' id='on-campus-locations-3' value='market' data-show-if-checked="on-campus-spending-3 on-campus-frequency-3"/>
+				<label>Market</label>
+				<input type='checkbox' name='on-campus-locations' id='on-campus-locations-4' value='commons' data-show-if-checked="on-campus-spending-4 on-campus-frequency-4"/>
+				<label>Commons</label>
+				<input type='checkbox' name='on-campus-locations' id='on-campus-locations-5' value='23' data-show-if-checked="on-campus-spending-5 on-campus-frequency-5"/>
+				<label>23 at Sneed</label>
+				<input type='checkbox' name='on-campus-locations' id='on-campus-locations-6' value='other' data-enable-if-checked='on-campus-locations-other' data-show-if-checked="on-campus-spending-6 on-campus-frequency-6"/>
+				<label>Other</label>
+				
+				<input required type='text' class='other-textbox' name='on-campus-locations-other' id='on-campus-locations-other' placeholder="Name of location"/>
+			</fieldset>
+			
+			<fieldset id="on-campus-spending" class='question number'>
+				<label>How much do you usually spend per trip?</label>
+				<!-- Add options dynamically based on selections in previous? -->
+				<div class="two-col-div">
+					<fieldset class='sub-question' id='on-campus-spending-1'>
+						<label>SUB</label> 
+						<output>&nbsp;</output>
+						<input required type="range" list='prices' min='0' max='7'  value='0' name='on-campus-spending' id='on-campus-spending-1-i'/> 
+					</fieldset>
+					<fieldset class='sub-question' id='on-campus-spending-2'>
+						<label>Fresh Plate</label> 
+						<output>&nbsp;</output>
+						<input required type="range" list='prices' min='0' max='7'  value='0' name='on-campus-spending' id='on-campus-spending-2-i'/> 
+					</fieldset>
+					<fieldset class='sub-question' id='on-campus-spending-3'>
+						<label>Market</label> 
+						<output>&nbsp;</output>
+						<input required type="range" list='prices' min='0' max='7'  value='0' name='on-campus-spending' id='on-campus-spending-3-i'/> 
+					</fieldset>
+					<fieldset class='sub-question' id='on-campus-spending-4'>
+						<label>Commons</label> 
+						<output>&nbsp;</output>
+						<input required type="range" list='prices' min='0' max='7'  value='0' name='on-campus-spending' id='on-campus-spending-4-i'/> 
+					</fieldset>
+					<fieldset class='sub-question' id='on-campus-spending-5'>
+						<label>23 at Sneed</label> 
+						<output>&nbsp;</output>
+						<input required type="range" list='prices' min='0' max='7'  value='0' name='on-campus-spending' id='on-campus-spending-5-i'/> 
+					</fieldset>
+					<fieldset class='sub-question' id='on-campus-spending-6'>
+						<label>Other</label> 
+						<output>&nbsp;</output>
+						<input required type="range" list='prices' min='0' max='7'  value='0' name='on-campus-spending' id='on-campus-spending-6-i'/> 
+					</fieldset>
+				</div>
+			</fieldset>
+			
+			<fieldset id="on-campus-frequency" class='question select'>
+				<label>How often do you usually visit each?</label>
+				<!-- Add options dynamically based on selections in previous -->
+				<div class="two-col-div">
+					<fieldset id='on-campus-frequency-1' class='sub-question'>
+						<label>SUB</label>
+						<output>&nbsp;</output>
+						<input required type='range' max='7' min='0' list='frequency'  value='0' name='on-campus-frequency' id='on-campus-frequency-1-i'>
+					</fieldset>
+					<fieldset id='on-campus-frequency-2' class='sub-question'>
+						<label>Fresh Plate</label>
+						<output>&nbsp;</output>
+						<input required type='range' max='7' min='0' list='frequency'  value='0' name='on-campus-frequency' id='on-campus-frequency-2-i'>
+					</fieldset>
+					<fieldset id='on-campus-frequency-3' class='sub-question'>
+						<label>Market</label>
+						<output>&nbsp;</output>
+						<input required type='range' max='7' min='0' list='frequency'  value='0' name='on-campus-frequency' id='on-campus-frequency-3-i'>
+					</fieldset>
+					<fieldset id='on-campus-frequency-4' class='sub-question'>
+						<label>Commons</label>
+						<output>&nbsp;</output>
+						<input required type='range' max='7' min='0' list='frequency'  value='0' name='on-campus-frequency' id='on-campus-frequency-4-i'>
+					</fieldset>
+					<fieldset id='on-campus-frequency-5' class='sub-question'>
+						<label>23 at Sneed</label>
+						<output>&nbsp;</output>
+						<input required type='range' max='7' min='0' list='frequency'  value='0' name='on-campus-frequency' id='on-campus-frequency-5-i'>
+					</fieldset>
+					<fieldset id='on-campus-frequency-6' class='sub-question'>
+						<label>Other</label>
+						<output>&nbsp;</output>
+						<input required type='range' max='7' min='0' list='frequency'  value='0' name='on-campus-frequency' id='on-campus-frequency-6-i'>
+					</fieldset>
+				</div>
+			</fieldset>
+
+			<fieldset id="on-campus-healthy" class='question true-false'>
+				<label>Would you say you usually choose healthy food options on campus?</label>
+				<input required type='radio' name='on-campus-healthy' value='true' id='on-campus-healthy-t' />
+				<label>Yes</label>
+				<input required type='radio' name='on-campus-healthy' value='true' id='on-campus-healthy-f' data-show-if-checked="on-campus-healthy-reason"/>
+				<label>No</label>
+			</fieldset>
+			
+			<fieldset id="on-campus-healthy-reason" class='question checkbox checkbox-with-other'>
+				<label>Why not?</label>
+				<input type='checkbox' name='on-campus-healthy-reason' id='on-campus-healthy-reason-1' value='preference' />
+				<label>Personal preference</label>
+				<input type='checkbox' name='on-campus-healthy-reason' id='on-campus-healthy-reason-2' value='price' />
+				<label>Healthier options are more expensive</label>
+				<input type='checkbox' name='on-campus-healthy-reason' id='on-campus-healthy-reason-3' value='few-good-options' />
+				<label>There are too few healthy choices</label>
+				<input type='checkbox' name='on-campus-healthy-reason' id='on-campus-healthy-reason-4' value='many-bad-options' />
+				<label>There are too many unhealthy choices</label>
+				<input type='checkbox' name='on-campus-healthy-reason' id='on-campus-healthy-reason-5' value='other' data-enable-if-checked='on-campus-healthy-reason-other'/>
+				<label>Other</label>
+				<input type='text' class='other-textbox' name='on-campus-healthy-reason-other' id='on-campus-healthy-reason-other' placeholder="Reason (optional)" />
+			</fieldset>
+		</fieldset>
+		
+		<fieldset id="eats-off-campus" class='question true-false'>
+			<label>Do you eat off-campus often?</label>
+			<input required type='radio' name='eats-off-campus' id='eats-off-campus-t' value="true" data-show-if-checked='off-campus'/>
+			<label for='eats-off-campus-t'>Yes</label>
+			
+			<input required type='radio' name='eats-off-campus' id='eats-off-campus-f' value="false" />
+			<label for='eats-off-campus-f'>No</label>
+		</fieldset>
+		
+		<fieldset id="off-campus" class='subfield'>
+			<fieldset id="off-campus-locations" class='question checkbox checkbox-with-other'>
+				<label>Which <u>two</u> do you get food from most often?</label>
+				
+				<input type='checkbox' name='off-campus-locations' id='off-campus-locations-1' value='grocery' data-show-if-checked="off-campus-spending-1 off-campus-frequency-1"/>
+				<label>Grocery Store</label>
+				<input type='checkbox' name='off-campus-locations' id='off-campus-locations-2' value='convenience' data-show-if-checked="off-campus-spending-2 off-campus-frequency-2"/>
+				<label>Convenience Store</label>
+				<input type='checkbox' name='off-campus-locations' id='off-campus-locations-3' value='restaurant' data-show-if-checked="off-campus-spending-3 off-campus-frequency-3"/>
+				<label>Restaurant</label>
+				<input type='checkbox' name='off-campus-locations' id='off-campus-locations-4' value='delivery' data-show-if-checked="off-campus-spending-4 off-campus-frequency-4"/>
+				<label>Food Delivery</label>
+				<input type='checkbox' name='off-campus-locations' id='off-campus-locations-5' value='other' data-enable-if-checked='off-campus-locations-other' data-show-if-checked="off-campus-spending-5 off-campus-frequency-5"/>
+				<label>Other</label>
+				
+				<input required type='text' class='other-textbox' name='off-campus-locations-other' id='off-campus-locations-other' placeholder="Name of location"/>
+			</fieldset>
+			
+			<fieldset id="off-campus-spending" class='question number'>
+				<label>How much do you usually spend each time?</label>
+				<!-- Add options dynamically based on selections in previous? -->
+				<div class="two-col-div">
+					<fieldset class='sub-question' id='off-campus-spending-1'>
+						<label>Grocery Store</label> 
+						<output>&nbsp;</output>
+						<input required type="range" list='prices' min='0' max='7'  value='0' name='off-campus-spending' id='off-campus-spending-1-i'/> 
+					</fieldset>
+					<fieldset class='sub-question' id='off-campus-spending-2'>
+						<label>Convenience Store</label> 
+						<output>&nbsp;</output>
+						<input required type="range" list='prices' min='0' max='7'  value='0' name='off-campus-spending' id='off-campus-spending-2-i'/> 
+					</fieldset>
+					<fieldset class='sub-question' id='off-campus-spending-3'>
+						<label>Restaurant</label> 
+						<output>&nbsp;</output>
+						<input required type="range" list='prices' min='0' max='7'  value='0' name='off-campus-spending' id='off-campus-spending-3-i'/> 
+					</fieldset>
+					<fieldset class='sub-question' id='off-campus-spending-4'>
+						<label>Food Delivery</label> 
+						<output>&nbsp;</output>
+						<input required type="range" list='prices' min='0' max='7'  value='0' name='off-campus-spending' id='off-campus-spending-4-i'/> 
+					</fieldset>
+					<fieldset class='sub-question' id='off-campus-spending-5'>
+						<label>Other</label> 
+						<output>&nbsp;</output>
+						<input required type="range" list='prices' min='0' max='7'  value='0' name='off-campus-spending' id='off-campus-spending-5-i'/> 
+					</fieldset>
+				</div>
+			</fieldset>
+			
+			<fieldset id="off-campus-frequency" class='question select'>
+				<label>How often do you usually get food from each?</label>
+				<!-- Add options dynamically based on selections in previous -->
+				<div class="two-col-div">
+					<fieldset id='off-campus-frequency-1' class='sub-question'>
+						<label>Grocery Store</label>
+						<output>&nbsp;</output>
+						<input required type='range' max='7' min='0' list='frequency'  value='0' name='off-campus-frequency' id='off-campus-frequency-1-i'>
+					</fieldset>
+					<fieldset id='off-campus-frequency-2' class='sub-question'>
+						<label>Convenience Store</label>
+						<output>&nbsp;</output>
+						<input required type='range' max='7' min='0' list='frequency'  value='0' name='off-campus-frequency' id='off-campus-frequency-2-i'>
+					</fieldset>
+					<fieldset id='off-campus-frequency-3' class='sub-question'>
+						<label>Restaurant</label>
+						<output>&nbsp;</output>
+						<input required type='range' max='7' min='0' list='frequency'  value='0' name='off-campus-frequency' id='off-campus-frequency-3-i'>
+					</fieldset>
+					<fieldset id='off-campus-frequency-4' class='sub-question'>
+						<label>Food Delivery</label>
+						<output>&nbsp;</output>
+						<input required type='range' max='7' min='0' list='frequency'  value='0' name='off-campus-frequency' id='off-campus-frequency-4-i'>
+					</fieldset>
+					<fieldset id='off-campus-frequency-5' class='sub-question'>
+						<label>Other</label>
+						<output>&nbsp;</output>
+						<input required type='range' max='7' min='0' list='frequency'  value='0' name='off-campus-frequency' id='off-campus-frequency-5-i'>
+					</fieldset>
+				</div>
+			</fieldset>
+
+			<fieldset id="off-campus-healthy" class='question true-false'>
+				<label>Would you say you usually choose healthy food options off campus?</label>
+				<input required type='radio' name='off-campus-healthy' value='true' id='off-campus-healthy-t' />
+				<label>Yes</label>
+				<input required type='radio' name='off-campus-healthy' value='true' id='off-campus-healthy-f' data-show-if-checked="off-campus-healthy-reason"/>
+				<label>No</label>
+			</fieldset>
+			
+			<fieldset id="off-campus-healthy-reason" class='question checkbox checkbox-with-other'>
+				<label>Why not?</label>
+				<input type='checkbox' name='off-campus-healthy-reason' id='off-campus-healthy-reason-1' value='preference' />
+				<label>Personal preference</label>
+				<input type='checkbox' name='off-campus-healthy-reason' id='off-campus-healthy-reason-2' value='price' />
+				<label>Healthier options are more expensive</label>
+				<input type='checkbox' name='off-campus-healthy-reason' id='off-campus-healthy-reason-3' value='few-good-options' />
+				<label>There are too few healthy choices</label>
+				<input type='checkbox' name='off-campus-healthy-reason' id='off-campus-healthy-reason-4' value='many-bad-options' />
+				<label>There are too many unhealthy choices</label>
+				<input type='checkbox' name='off-campus-healthy-reason' id='off-campus-healthy-reason-5' value='other' data-enable-if-checked='off-campus-healthy-reason-other'/>
+				<label>Other</label>
+				<input type='text' class='other-textbox' name='off-campus-healthy-reason-other' id='off-campus-healthy-reason-other' placeholder="Reason (optional)" />
+			</fieldset>
+		</fieldset>
+		
+		
+		<input type='submit' value='Submit' id='submit'>
+		
+
+	</form>
+	
+		
+	<datalist id='prices'>
+		<option value='0' label="$0"></option>
+		<option value='1' label="$1-10"></option>
+		<option value='2' label="$11-25"></option>
+		<option value='3' label="$26-50"></option>
+		<option value='4' label="$51-100"></option>
+		<option value='5' label="$101-150"></option>
+		<option value='6' label="$151-200"></option>
+		<option value='7' label=">$200"></option>
+	</datalist>
+	<datalist id='frequency'>
+		<option value="7" label="More than once a day"></option>
+		<option value="6" label="Daily"></option>
+		<option value="5" label="Every few days"></option>
+		<option value="4" label="Weekly"></option>
+		<option value="3" label="Every few weeks"></option>
+		<option value="2" label="Monthly"></option>
+		<option value="1" label="Every few months"></option>
+		<option value="0" label="Almost never"></option>
+	</datalist>
+	
+<pre id='changes'></pre>
+<script>
+	let pending = [];
+	
+	function handleRadioChange(e) {
+		let parent = e.target.parentElement;
+		let radios = document.querySelectorAll("#" + parent.id + ">:is(input[type='radio'], input[type='checkbox'])");
+		if (e.target.type == "checkbox") {radios = [e.target]}
+		
+		
+		for (const radio of radios) {
+			if(radio.checked) {
+				show(radio.dataset.showIfChecked);
+				enable(radio.dataset.enableIfChecked);
+				hide(radio.dataset.hideIfChecked);
+				disable(radio.dataset.disableIfChecked);
+			} else {
+				show(radio.dataset.hideIfChecked);
+				enable(radio.dataset.disableIfChecked);
+				hide(radio.dataset.showIfChecked);
+				disable(radio.dataset.enableIfChecked);
+			}
+		}
+	}
+		
+	function show(ids) {
+		if (ids) {
+			for (let id of ids.split(" ")) {
+				let el = document.querySelector("#" + id);
+				el.style.maxHeight = "";
+				el.style.marginTop = "";
+				el.style.border = "";
+				enable(id);
+			}
+		}
+	}
+	function hide(ids) {
+		if (ids) {
+			for (let id of ids.split(" ")) {
+				let el = document.querySelector("#" + id);
+				el.style.maxHeight = "0";
+				el.style.marginTop = "0";
+				el.style.border = "none";
+				disable(id);
+			} 
+		}
+	}
+	function enable(ids) {
+		if (ids) {
+			for (let id of ids.split(" ")) {
+				let el = document.querySelector("#" + id);
+				el.disabled = false;
+			} 
+		}
+	}
+	function disable(ids) {
+		if (ids) {
+			for (let id of ids.split(" ")) {
+				let el = document.querySelector("#" + id);
+				el.disabled = true;
+			} 
+		}
+	}
+	
+	
+	
+	let properties = [
+			'has-dining-plan',
+				'purchase-reason',
+				'purchase-reason-other',
+				'plan-type',
+				'ran-out',
+				'refilled',
+				'would-purchase-again',
+			'eats-on-campus',
+				'on-campus-locations',
+				'on-campus-locations-other',
+				'on-campus-spending',
+				'on-campus-frequency',
+				'on-campus-healthy',
+				'on-campus-healthy-reason',
+				'on-campus-healthy-reason-other',
+			'eats-off-campus',
+				'off-campus-locations',
+				'off-campus-locations-other',
+				'off-campus-spending',
+				'off-campus-frequency',
+				'off-campus-healthy',
+				'off-campus-healthy-reason',
+				'off-campus-healthy-reason-other'
+	]
+	let csvContent = "data:text/csv;charset=utf-8,";
+	for (let property of properties) {
+		csvContent += property + ",";
+	}
+	csvContent += "\n";
+	
+	function handleSubmit(e) {
+		e.preventDefault();
+		
+		let ch = document.querySelector("#changes");
+		let f = document.forms[0];
+		
+		let formData = new FormData(f);
+		
+		for (let property of properties) {
+			let data = formData.getAll(property);
+			csvContent += String(data).includes(",") ? "[" + data + "]," : data + ",";
+		}
+		csvContent += "\n";
+		
+		ch.innerHTML = csvContent; ch.style.maxWidth="100%"; ch.style.overflow="scroll";
+		
+		let encodedUri = encodeURI(csvContent);
+		let link = document.querySelector("#download") || document.createElement("a");
+		link.setAttribute("href", encodedUri);
+		link.setAttribute("download", "my_data.csv");
+		link.setAttribute("id", "download");
+		link.innerHTML = "download data";
+		document.body.appendChild(link);
+		
+
+		link.click();
+	}
+	
+	function handleSliderChange(e) {
+		let list =  e.target.list;
+		let out = document.querySelector("#" + e.target.parentElement.id + ">output");
+		let x = Number(e.target.value); 
+
+		out.innerHTML = list.querySelector("option[value='" + x + "']").label;
+	
+	}
+	
+		
+	let watchedRadios = document.querySelectorAll(":has([data-show-if-checked])>:is(input[type='radio'], input[type='checkbox']), :has([data-enable-if-checked])>:is(input[type='radio'], input[type='checkbox'])");
+	
+	for (let radio of watchedRadios) {
+		radio.addEventListener("change", handleRadioChange);
+	}
+	
+	let sliders = document.querySelectorAll("input[type='range']");
+	for (let slider of sliders) {
+		slider.addEventListener("input", handleSliderChange);
+	}
+	
+	let setupEvent = new Event("change");
+	for (let radio of watchedRadios) {
+		radio.dispatchEvent(setupEvent);
+	}
+	
+	document.querySelector("#survey").addEventListener("submit", handleSubmit);
+		
+</script>
+</body>
+</html>
