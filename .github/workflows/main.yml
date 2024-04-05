@@ -26,7 +26,7 @@ jobs:
         uses: docker://pandoc/latex:2.9
         with:
           entrypoint: /bin/sh
-          args: -c "IFS=$'\n'; mkdir output; for file in ${ALL_CHANGED_FILES}; do echo \"$file\"; pandoc \"${file}\" --from markdown+tex_math_dollars-yaml_metadata_block --to html5 --standalone --highlight-style=breezeDark --mathjax -o \"output/${file%.md}.html\"; done"
+          args: -c "IFS=$'\n'; mkdir output; for file in ${ALL_CHANGED_FILES}; do echo \"$file\"; pandoc \"${file}\" --from markdown+tex_math_dollars-yaml_metadata_block --to html5 --standalone --highlight-style=breezeDark --mathjax -o \"${file%.md}.html\"; done"
       - run: |
           git config user.name "convert-action"
           git config user.email "<>"
