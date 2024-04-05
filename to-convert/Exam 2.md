@@ -2,7 +2,7 @@
 **Q1: The following is a definition for the language of L(G). Is the definition correct? If not, explain what is incorrect with it.**
 > Let G = (V, Σ, R, S) be a context-free grammar. The language of G is defined to be the set of all strings in $\mathcal P$(Σ) that can be derived in one step from the start variable S: $$L(G) = \{w ∈ \mathcal P(Σ): S \Rightarrow w\}$$Where S $\Rightarrow$ w means w can be derived in one step from S.
 
-- This definition is not correct. The language of a context-free grammar is defined as all strings derived from the start variable in any number of steps, $S\xRightarrow* w$, not just a single step. 
+- This definition is not correct. The language of a context-free grammar is defined as all strings derived from the start variable in any number of steps, $S\Rightarrow\overset* w$, not just a single step. 
 - In addition, strings in a language may have the same character appear more than once, while each member of a powerset may only have one occurrance of each possible character, so it should be that $w\in\Sigma^*$.
 
 **Q2: Given the following context free grammar:** $$\begin{align}G: &\quad \Sigma=\{a,b\}\\S&\to aSa|B \\B&\to bB|Bb|b\end{align}$$ **What kinds of strings (in terms of characters and structure) are in L(G)?**
