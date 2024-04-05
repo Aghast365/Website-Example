@@ -10,14 +10,16 @@
 - The language $L(G)$ consists of strings containing the characters $a$ and $b$. 
 - All strings in this language will start and end with the same number of zero or more $a$'s, and have one or more $b$'s in the middle.
 
----
+***
+
 ## Section 2
 **Q3: Given the follow context free grammar G: $$\begin{align}&\Sigma =\{a\} \quad \Gamma = \{S,X,Y,X_1,X_2\} \\S&\to \epsilon|YY|XY|YX|aa|YX_1\\X&\to YY|XY|YX|aa|YX_2\\Y&\to aa\\X_1&\to XY \kern 3em X_2\to XY\end{align}$$Is G in Chomsky Normal Form? If not, convert it into Chomsky Normal Form.**
 
 - $G$ is not in Chomsky normal form, as it contains rules with multiple non-terminals on one side. This may be addressed by adding the variable $X_3$ and the rule $X_3\to a$, then replacing the occurances of $a$ in the previous rules with $X_3$:
 $$\begin{align}&\Sigma =\{a\} \quad \Gamma = \{S,X,Y,X_1,X_2,X_3\} \\S&\to \epsilon|YY|XY|YX|X_3X_3|YX_1\\X&\to YY|XY|YX|X_3X_3|YX_2\\Y&\to X_3X_3\\X_1&\to XY \kern 3em X_2\to XY\\X_3&\to a\end{align}$$
 
----
+***
+
 ## Section 3
 **Q4: Give a pushdown automata for strings of a’s and b’s with more a’s than b’s, and the total number of characters is evenly divisible by 3. $$L=\left\{w\in\{a,b\}^*:\displaylines{\text{len}(w) \% 3 = 0\\ \text{and}\\|a(w)|>|b(w)|}\right\}$$(a(w) and b(w) are “the number of a’s in w”, and “the number of b’s in w” respectively)**
 
@@ -176,7 +178,8 @@ $$\begin{align}&\Sigma =\{a\} \quad \Gamma = \{S,X,Y,X_1,X_2,X_3\} \\S&\to \epsi
 
 - The strings in $L(G)$ will contain any number of $x$'s, followed by any number of $y's$, followed by a number of $z$'s equal to the number of $x$'s plus the number of $y$'s
 
----
+***
+
 ## Section 4
 **Q6: Given the binary function f: A x B -> C where A, B, and C are sets: $$f(A,B)=\{w:w\in A \text{ or } w\in B\}$$Are context free languages closed under f?**
 - The function $f$ is equivalent to the union operation. If $A$ and $B$ are context-free, there exist languages $G_A$ and $G_B$ that describe them, with start variables $S_A$ and $S_B$. Then, a context-free grammar describing $C$ may be produced by including all rules and variables from $G_A$ and $G_B$, plus its own start variable $S_C$ with the rule $S_C\to S_A|S_B$. Therefore, context-free languages are closed under this function.
@@ -184,7 +187,8 @@ $$\begin{align}&\Sigma =\{a\} \quad \Gamma = \{S,X,Y,X_1,X_2,X_3\} \\S&\to \epsi
 **Q7: The following language L is over binary strings. We can consider each string to have a binary value, i.e.: “1001” = 1001 in binary, and “1001” % 2 == 1.$$L=\{w\in\{0,1\}^* : w\leq n \text{ and } w\%2=1\}$$Given some natural number n greater than 0, is L context free? Prove your answer.**
  - Because all strings in $L$ have a length less than $n$, it accepts only a finite number of strings. Therefore, a regular language accepting $L$ may be constructed as the union of regular expressions, where each regular expression describes some string in $L$. Then, becuase all regular languages are also context-free, $L$ must be context-free.
 
----
+***
+
 ## Section 5
 **For questions in section 5, determine whether each language L is context free or not. If it is context free, provide a context free grammar. If it is not context free, provide a proof with the pumping lemma for context free languages.**
 
