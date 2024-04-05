@@ -20,7 +20,10 @@
 </head>
 <body>
 <h2 id="section-1">Section 1</h2>
-<p><strong>Q1: The following is a definition for the language of L(G). Is the definition correct? If not, explain what is incorrect with it.</strong> &gt; Let G = (V, Σ, R, S) be a context-free grammar. The language of G is defined to be the set of all strings in <span class="math inline">\(\mathcal P\)</span>(Σ) that can be derived in one step from the start variable S: <span class="math display">\[L(G) = \{w ∈ \mathcal P(Σ): S \Rightarrow w\}\]</span>Where S <span class="math inline">\(\Rightarrow\)</span> w means w can be derived in one step from S.</p>
+<p><strong>Q1: The following is a definition for the language of L(G). Is the definition correct? If not, explain what is incorrect with it.</strong></p>
+<blockquote>
+<p>Let G = (V, Σ, R, S) be a context-free grammar. The language of G is defined to be the set of all strings in <span class="math inline">\(\mathcal P\)</span>(Σ) that can be derived in one step from the start variable S: <span class="math display">\[L(G) = \{w ∈ \mathcal P(Σ): S \Rightarrow w\}\]</span>Where S <span class="math inline">\(\Rightarrow\)</span> w means w can be derived in one step from S.</p>
+</blockquote>
 <ul>
 <li>This definition is not correct. The language of a context-free grammar is defined as all strings derived from the start variable in any number of steps, <span class="math inline">\(S\Rightarrow\overset* w\)</span>, not just a single step.</li>
 <li>In addition, strings in a language may have the same character appear more than once, while each member of a powerset may only have one occurrance of each possible character, so it should be that <span class="math inline">\(w\in\Sigma^*\)</span>.</li>
