@@ -1,0 +1,35 @@
+name: Convert changed md to pdf on push
+
+on: push
+
+permissions: 
+  contents: write
+
+jobs:
+  convert_via_pandoc:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get all changed markdown files
+        id: changed-markdown-files
+        uses: tj-actions/changed-files@v44
+        with:
+          # Avoid using single or double quotes for multiline patterns
+          files: |
+             **.md
+      
+      - name: Convert md to pdf
+        if: steps.changed-markdown-files.outputs.any_changed == 'true'
+        env:
+          ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
+        uses: docker://pandoc/latex:2.9
+        with:
+          entrypoint: /bin/sh
+          args: -c "IFS=$'\n'; mkdir output; for file in ${ALL_CHANGED_FILES}; do echo \"$file\"; pandoc \"${file}\" --from markdown+tex_math_dollars-yaml_metadata_block --to html5 --standalone --highlight-style=breezeDark --mathjax -o \"output/${file%.md}.html\"; done"
+      - run: |
+          git config user.name "convert-action"
+          git config user.email "<>"
+          git add .
+          git diff-index --quiet HEAD || git commit -m "converted md to pdf"
+          git push
