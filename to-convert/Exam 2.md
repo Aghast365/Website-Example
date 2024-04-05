@@ -1,4 +1,3 @@
-
 ## Section 1
 **Q1: The following is a definition for the language of L(G). Is the definition correct? If not, explain what is incorrect with it.**
 > Let G = (V, Σ, R, S) be a context-free grammar. The language of G is defined to be the set of all strings in $\mathcal P$(Σ) that can be derived in one step from the start variable S: $$L(G) = \{w ∈ \mathcal P(Σ): S \Rightarrow w\}$$Where S $\Rightarrow$ w means w can be derived in one step from S.
