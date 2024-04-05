@@ -18,6 +18,7 @@ jobs:
           # Avoid using single or double quotes for multiline patterns
           files: |
              to-convert/**.md
+          files-separator: '\n'
       
       - name: Convert md to pdf
         if: steps.changed-markdown-files.outputs.any_changed == 'true'
