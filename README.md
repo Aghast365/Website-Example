@@ -9,4 +9,4 @@ Jekyll Tactile Theme taken from [pages-themes](https://github.com/pages-themes/t
 Photograph of Bird of Paradise by Tim Laman, [National Geographic](https://www.nationalgeographic.com/animals/article/new-species-birds-of-paradise-animals-spd)
 
 Styles for pandoc adapted from [bgw/pan-am](https://github.com/bgw/pan-am),
-with additional code from normalize.css v3.0.0, [](git.io/normalize), under MIT License
+with additional code from normalize.css v3.0.0, [git.io/normalize](git.io/normalize), under MIT License
