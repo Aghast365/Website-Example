@@ -1,6 +1,9 @@
 name: Convert changed md to pdf on push
 
-on: push
+on: 
+  push:
+    paths:
+      - 'to-convert/**.md'
 
 permissions: 
   contents: write
