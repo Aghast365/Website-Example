@@ -78,4 +78,4 @@ This turing machine has input alphabet $\Sigma = \{1\}$, tape alphabet $\Gamma =
 
 This copies the string by moving a blank space through the initial string to keep track of the position while copying, as in this diagram:
 
-![](turing%20copy%20example.jpg)
+![](Attachments/turing%20copy%20example.jpg)
