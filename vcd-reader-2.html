@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+html, body {
+	background-color: #DCDAD5;
+	height: 90%;
+	width: 100%;
+}
+
+#variables-list {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	place-content: center;
+	max-width: 75px;
+}
+#variables-list > button {
+	width: 50px;
+	height: 50px;
+	font-size: 20pt;
+}
+
+#waves-diagram > svg {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.display-container {
+	height: 100%;
+	padding: 2px 3px 3px 3px;
+	border: 3px groove white;
+	min-width: 75px;
+}
+
+.display-container > legend {
+	font-family: Tahoma;
+	font-size: 10pt;
+	font-weight: semi-bold;
+}
+
+.display {
+	background-color: white;
+	width: 100%;
+	height: 100%;
+	font-family: "dejavu sans mono";
+	font-size: 10pt;
+	overflow: scroll;
+	margin: 0;
+}
+
+.display > span, .display > input, .display > pre {
+	display: block;
+	padding: 2px;
+	font-family: inherit;
+}
+
+.display > pre {
+	margin: 0;
+}
+
+.column {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+
+#main {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	place-content: start;
+}
+
+
+</style>
+</head>
+<body>
+<div id='main'>
+<div class='column'>
+	<fieldset id='variables' class='display-container'>
+		<legend>Variables</legend>
+		<div class='display' id='variables-list'>
+		
+		</div>
+	</fieldset>
+</div>
+
+<div class='column'>
+	<fieldset id='signals' class='display-container'>
+	<legend>Signals</legend>
+		<div class='display' id='waves-list'>
+			<span>Time</span>
+		</div>
+	</fieldset>
+</div>
+
+<div class='column'>
+	<fieldset id='waves' class='display-container'>
+	<legend>Waves</legend>
+		<div class='display' id='waves-diagram'>
+		
+		</div>
+	</fieldset>
+</div>
+
+<div class='column'>
+	<fieldset id='file' class='display-container'>
+		<legend>File</legend>
+		<div class='display'>
+			<input type='file' id='input'/>
+			<pre id='output'> </pre>
+		</div>
+	</fieldset>
+</div>
+
+<div class='column'>
+	<fieldset id='parsed-file' class='display-container'>
+	<legend>Parsed File</legend>
+	<div class='display'>
+		<pre id='parsed-output'> </pre>
+	</div>
+	</fieldset>
+</div>
+</div>
+
+<script>
+	const input = document.querySelector("#input");
+	const reader = new FileReader();
+	
+function Scope(type, name) {
+	this.type = type;
+	this.name = name;
+	this.variables = [];
+	this.scopes = [];
+	this.parent = null;
+}
+
+let varid = 0;
+function Variable(type, size, symbol, name = null, bus = null) {
+	this.type = type;
+	this.size = parseInt(size);
+	this.symbol = symbol;
+	this.name = name;
+	this.bus = bus;
+	this.id = varid; varid++;
+}
+
+function readVCD(vcd) {	
+	headers = {};
+	scopes = [];
+	current_scope = null;
+	variables = {};
+	timestamps = {};
+	
+	let tokens = vcd.split(/\s+/).map((x)=>x.trim()).filter((x)=> x!="");
+
+	for (let i = 0; i < tokens.length; i++) {
+		console.log(`reading token ${tokens[i]}`);
+		if (tokens[i] == "") {continue}
+		else if (tokens[i][0] == "$") { 
+			let block = tokens[i].slice(1);
+			let end = tokens.slice(i).indexOf("$end") + i;
+			let args = tokens.slice(i + 1, end);
+			switch (block) {
+				case "end":
+				case "enddefinitions":
+				case "comment":
+					break;
+				case "dumpall":
+				case "dumpoff":
+				case "dumpon":
+				case "dumpvars":
+					continue;
+					break;
+				case "date":
+				case "version":
+					headers[block] = args.join(" ");
+					break;
+				case "timescale":
+					args = args.join(" ");
+					headers.timescale = { number: args.match(/\d+/)[0], unit: args.match(/[a-zA-Z]+/)[0] };
+					break;
+				case "scope":
+					let scope = new Scope(...args);
+					if (current_scope) {
+						current_scope.scopes.push(scope);
+						scope.parent = current_scope;
+					} else {
+						scopes.push(scope);
+					}
+					current_scope = scope;
+					break;
+				case "upscope":
+					if (current_scope) {
+						let temp = current_scope;
+						current_scope = current_scope.parent;
+						delete temp.parent;
+					}
+					break;
+				case "var":
+					let variable = new Variable(...args);
+					if (current_scope) {
+						current_scope.variables.push(variable);
+					}
+					variables[variable.symbol] = variable;
+					break;
+				default: 
+					console.log(`No behavoir specified for ${block}, ${args.join(" ")}, ignoring`);
+			}
+			i = end;
+		} else if (tokens[i][0] == "#") {
+			let time = tokens[i].slice(1);
+			let end = tokens.slice(i+1).findIndex((x) => x.search(/#\d+/) != -1);
+			if (end == -1) {end = tokens.length} else {end += i+1}
+			let values = tokens.slice(i+1, end);
+			timestamps[time] = {};
+			for (let j = 0; j < values.length; j++) {
+				console.log(`Reading value ${values[j]}`);
+				if (values[j][0] == "$") {}
+				else if (values[j][0].toLowerCase() == "b") {
+					timestamps[time][values[j+1]] = values[j].slice(1).split("");
+					j++;
+				} else if (values[j][0].toLowerCase() == "r") {
+					timestamps[time][values[j+1]] = parseFloat(values[j]);
+					j++;
+				} else {
+					timestamps[time][values[j].slice(1)] = [values[j][0]];
+				}
+			}
+			i = end - 1;
+		} else {
+			console.log(`Error processing token ${tokens[i]}`);
+		}
+	}
+	
+	let data = {headers: headers, variables: variables, timestamps: timestamps, scopes: scopes};
+	console.log("Final data: ", data);
+	return data;
+}
+	
+const NS = 'http://www.w3.org/2000/svg';
+const diagramHScale = 1;
+const diagramVScale = 25;
+const hPadding = 10
+const vPadding = 2;
+const delay = 4;
+const color = 'black';
+
+function renderWave (variable, timestamps, expand = false) {
+	let times = Object.getOwnPropertyNames(timestamps).map((x)=>parseInt(x)).toSorted((a,b) => a > b);
+	const width = times.at(-1) * diagramHScale;
+	const height = diagramVScale;
+	
+	let svg = document.createElementNS(NS,'svg');
+	
+	svg.dataset.id = variable.id;
+	
+	svg.setAttributeNS(null, 'viewBox', `${-hPadding} ${-vPadding} ${width + 2*hPadding} ${expand ? (height + vPadding) * variable.size + vPadding : height + 2*vPadding}`);
+	svg.setAttributeNS(null, 'width', width + 2*hPadding);
+	svg.setAttributeNS(null, 'height', expand ? (height + vPadding) * variable.size + vPadding: height + 2*vPadding);
+	
+	let values = [];
+	for (let time of times) {
+		if (Object.hasOwn(timestamps[time], variable.symbol)) {
+			values.push(timestamps[time][variable.symbol]);
+			while (values.at(-1).length < variable.size) {
+				values.at(-1).unshift(0);
+			}
+		} else {
+			values.push(values.at(-1));
+		}
+	}
+	
+	for (let i = 0; i <= variable.size; i++) {
+		let path = document.createElementNS(NS, 'path');
+		let d = `M 0 ${height + (expand ? (height + vPadding) * i : 0)} `;
+		for (let j = 0; j < times.length - 1; j++) {
+			d += `L ${times[j] * diagramHScale + delay} ${ (1 - values[j][i]) * height + (expand ? (height + vPadding) * i : 0)} H ${ times[j+1] } `;
+		}
+		path.setAttributeNS(null, 'd', d);
+		path.setAttributeNS(null, 'stroke', color);
+		path.setAttributeNS(null, 'fill', 'none');
+		
+		svg.appendChild(path);
+	}
+	if (!expand && variable.size > 1) {
+		for (let i = 0; i < times.length - 1; i++) {
+			let label = document.createElementNS(NS, 'text');
+			label.textContent = values[i].join("");
+			label.setAttributeNS(null, 'text-anchor', 'start');
+			label.setAttributeNS(null, 'dominant-baseline', 'middle');
+			label.setAttributeNS(null, 'font-size', (height/2) + 'px');
+			label.setAttributeNS(null, 'x', times[i] * diagramHScale + delay);
+			label.setAttributeNS(null, 'y', height/2);
+			svg.appendChild(label);
+		}
+		
+	}
+	return svg;
+}
+
+function renderTimescale (timestamps, unit) {
+	let times = Object.getOwnPropertyNames(timestamps).map((x)=>parseInt(x)).toSorted((a,b) => a > b);
+	const width = times.at(-1) * diagramHScale;
+	const height = diagramVScale;
+	const tickLength = height;
+	const labelFrequency = Math.ceil(Math.sqrt(times.length - 1));
+	
+	// Create time scale svg
+	let timeSvg = document.createElementNS(NS, 'svg');
+		
+	timeSvg.setAttributeNS(null, 'viewBox', `${-hPadding} ${-vPadding} ${width + 2*hPadding} ${height + 2*vPadding}`);
+	timeSvg.setAttributeNS(null, 'width', width + 2*hPadding);
+	timeSvg.setAttributeNS(null, 'height', height + 2*vPadding);
+	
+	let timePath = document.createElementNS(NS, 'path');
+		
+	let timeD = `M 0 ${height/2} H ${width} `;
+	for (let i = 0; i < times.length; i++) {
+		if (i % labelFrequency == 0) {
+			timeD += `M ${times[i] * diagramHScale} ${(height - tickLength)/2} v ${tickLength} `;
+			let timeLabelS = document.createElementNS(NS, 'text');
+			let timeLabelE = document.createElementNS(NS, 'text');
+			timeLabelS.textContent = i == times.length - 1 ? times[i] + ' ' + unit : i==0 ? "" : times[i];
+			timeLabelE.textContent = i == 0 ? times[i] + ' ' + unit : i == times.length - 1 ? "" : unit;
+			timeLabelS.setAttributeNS(null, 'text-anchor', 'end');
+			timeLabelE.setAttributeNS(null, 'text-anchor', 'start');
+			timeLabelS.setAttributeNS(null, 'dominant-baseline', 'text-bottom');
+			timeLabelE.setAttributeNS(null, 'dominant-baseline', 'text-bottom');
+			timeLabelS.setAttributeNS(null, 'font-size', (tickLength/2) + 'px');
+			timeLabelE.setAttributeNS(null, 'font-size', (tickLength/2) + 'px');
+			timeLabelS.setAttributeNS(null, 'x', times[i] * diagramHScale - 2);
+			timeLabelS.setAttributeNS(null, 'y', height/2 - 2);
+			timeLabelE.setAttributeNS(null, 'x', times[i] * diagramHScale + 2);
+			timeLabelE.setAttributeNS(null, 'y', height/2 - 2);
+			timeSvg.appendChild(timeLabelS);
+			timeSvg.appendChild(timeLabelE);
+		} else {
+			timeD += `M ${times[i] * diagramHScale} ${height/2} v ${tickLength/2} `;
+		}
+	}
+	timePath.setAttributeNS(null, 'd', timeD);
+	timePath.setAttributeNS(null, 'stroke', color);
+	timePath.setAttributeNS(null, 'fill', 'none');
+	
+	timeSvg.appendChild(timePath);
+	
+	return timeSvg
+}
+
+function renderPage (data, expand = false) {
+	let height = diagramVScale;
+	// grab page elements
+	const variablesList = document.querySelector("#variables-list");
+	const wavesList = document.querySelector("#waves-list");
+	const wavesDiagram = document.querySelector("#waves-diagram");
+
+	// clear everything
+	variablesList.textContent = '';
+	wavesList.textContent = '';
+	wavesDiagram.textContent = '';
+	
+	let timeLabel = document.createElement('span');
+	timeLabel.textContent = 'Time';
+	timeLabel.style.height = height + 2*vPadding + 'px';
+	timeLabel.style.lineHeight = height + 2*vPadding + 'px';
+	wavesList.appendChild(timeLabel);
+	let timeSvg = renderTimescale(data.timestamps, data.headers.timescale.unit);
+	wavesDiagram.appendChild(timeSvg);
+	
+	let variables = data.scopes[0].variables;
+	//Object.getOwnPropertyNames(data.variables).map((x) => data.variables[x]).toSorted((a,b) => a.name.localeCompare(b.name)).filter((e,i,a)=>!a[i+1]||(a[i+1].name !== e.name && a[i+1].symbol !== e.symbol));
+	for (let variable of variables) {
+		let button = document.createElement('button');
+		button.textContent = variable.name;
+		button.dataset.id = variable.id;
+		button.classList = ['variable-toggle'];
+		button.addEventListener('click', toggleWave);
+		variablesList.appendChild(button);
+		
+		let label = document.createElement('span');
+		label.textContent = variable.name + "=";
+		label.dataset.id = variable.id;
+		if (expand) {
+			label.style.height = (height + vPadding) * size + vPadding + 'px';
+			label.style.lineHeight = (height + vPadding) * size + vPadding + 'px';
+		} else {
+			label.style.height = height + 2*vPadding + 'px';
+			label.style.lineHeight = height + 2*vPadding + 'px';
+		}
+		let subLabel = document.createElement('span');
+		subLabel.textContent = data.timestamps[0][variable.symbol];
+		label.appendChild(subLabel);
+		wavesList.appendChild(label);
+		
+		let svg = renderWave(variable, data.timestamps, expand);
+		wavesDiagram.appendChild(svg);
+	}
+}
+
+	const handleFile = (e) => {
+		const file = input.files[0];
+		if (file) {
+			reader.readAsText(file);
+		}
+	}
+	
+	const parseFile = (e) => {
+		let result = reader.result;
+		
+		// show contents of file
+		const output = document.querySelector("#output");
+		output.textContent = result;
+		
+		// parse file into object
+		let data = readVCD(result);
+		let [headers, timestamps, variables, scopes] = [data.headers, data.timestamps, data.variables, data.scopes];
+		// show parsed file
+		const parsedOutput = document.querySelector("#parsed-output");
+		parsedOutput.textContent = "";
+		
+		const addNL = (str, i=0) => parsedOutput.textContent += "\t".repeat(i) + str + "\n";
+		addNL("Date: " + headers.date);
+		addNL("Version: " + headers.version);
+		addNL("Timescale: " + headers.timescale.number + headers.timescale.unit);
+		addNL("Wave Data\n---");
+		for (let time of Object.getOwnPropertyNames(timestamps)) {
+			addNL(time + ": ");
+			for (let symbol of Object.getOwnPropertyNames(timestamps[time])) {
+				addNL(variables[symbol].name + ": " + timestamps[time][symbol], 1);
+			}
+		}
+		
+		// render page
+		renderPage(data, false);
+		
+	}
+	
+	const toggleWave = (e) => {
+		let id = e.target.dataset.id;
+		const wavesList = document.querySelector("#waves-list");
+		const wavesDiagram = document.querySelector("#waves-diagram");
+		let label = wavesList.querySelector(`span[data-id="${id}"]`);
+		let diagram = wavesDiagram.querySelector(`svg[data-id="${id}"]`);
+		if (label.style.display == 'none') {
+			label.style.display = '';
+			diagram.style.display = '';
+			wavesList.appendChild(label);
+			wavesDiagram.appendChild(diagram);
+			e.target.style.backgroundColor = "#EAEAEA";
+		} else {
+			label.style.display = 'none';
+			diagram.style.display = 'none';
+			e.target.style.backgroundColor = "#777777";
+		}
+		
+	}
+	
+	
+	
+	input.addEventListener("change", handleFile);
+	reader.addEventListener("load", parseFile);
+
+
+
+</script>
+
+</body>
+</html>
